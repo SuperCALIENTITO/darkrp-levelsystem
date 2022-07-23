@@ -18,9 +18,9 @@ local xp_player_license = GetConVar("darkrp_ls_player_license"):GetInt()
 ------------- Shipments ----------
 ----------------------------------
 hook.Add("playerBoughtShipment", "DarkRPLS_PlayerBoughtShipment", function(ply)
-	DLS_checkPlayerDatabase(ply)
+    DLS_checkPlayerDatabase(ply)
     DLS_levelUpPlayer(ply, xp_buy_shipment)
-	DLS_updatePlayerName(ply)
+    DLS_updatePlayerName(ply)
 
     ply:SetNWInt("darkrp_ls_level", DLS_getLevelPlayer(ply))
 end)

@@ -11,12 +11,12 @@ local xp_connections = GetConVar("darkrp_ls_connections"):GetInt()
 ----------- Connection -----------
 ----------------------------------
 hook.Add("PlayerInitialSpawn", "DarkRPLS_connection", function(ply)
-	DLS_checkPlayerDatabase(ply)
+    DLS_checkPlayerDatabase(ply)
     DLS_levelUpPlayer(ply, xp_connections)
-	DLS_updatePlayerName(ply)
+    DLS_updatePlayerName(ply)
 
     ply:SetNWInt("darkrp_ls_level", DLS_getLevelPlayer(ply))
-	return
+    return
 end)
 
 
@@ -24,20 +24,20 @@ end)
 -------------- Kills -------------
 ----------------------------------
 hook.Add("PlayerDeath", "DarkRPLS_Death", function(victim, inflictor, attacker)
-	DLS_checkPlayerDatabase(victim)
+    DLS_checkPlayerDatabase(victim)
     DLS_levelUpPlayer(victim, xp_deaths)
-	DLS_updatePlayerName(victim)
+    DLS_updatePlayerName(victim)
 
     victim:SetNWInt("darkrp_ls_level", DLS_getLevelPlayer(victim))
 
-	if inflictor:IsPlayer() and (victim ~= attacker) then
+    if inflictor:IsPlayer() and (victim ~= attacker) then
         DLS_checkPlayerDatabase(inflictor)
         DLS_levelUpPlayer(inflictor, xp_kills)
         DLS_updatePlayerName(inflictor)
 
         inflictor:SetNWInt("darkrp_ls_level", DLS_getLevelPlayer(attacker))
-	end
-	return
+    end
+    return
 end)
 
 
@@ -45,9 +45,9 @@ end)
 -------------- Chats -------------
 ----------------------------------
 hook.Add("PlayerSay", "DarkRPLS_Chat", function(ply)
-	DLS_checkPlayerDatabase(ply)
+    DLS_checkPlayerDatabase(ply)
     DLS_levelUpPlayer(ply, xp_chats)
-	DLS_updatePlayerName(ply)
+    DLS_updatePlayerName(ply)
 
     ply:SetNWInt("darkrp_ls_level", DLS_getLevelPlayer(ply))
     return
@@ -58,9 +58,9 @@ end)
 ------------- Physgun ------------
 ----------------------------------
 hook.Add("PhysgunPickup", "DarkRPLS_Physgun", function(ply)
-	DLS_checkPlayerDatabase(ply)
+    DLS_checkPlayerDatabase(ply)
     DLS_levelUpPlayer(ply, xp_physgun)
-	DLS_updatePlayerName(ply)
+    DLS_updatePlayerName(ply)
 
     ply:SetNWInt("darkrp_ls_level", DLS_getLevelPlayer(ply))
     return
