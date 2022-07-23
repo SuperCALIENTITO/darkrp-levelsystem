@@ -10,7 +10,7 @@ local xp_connections = GetConVar("darkrp_ls_connections"):GetInt()
 ----------------------------------
 ----------- Connection -----------
 ----------------------------------
-hook.Add("PlayerInitialSpawn", "DrpLS_connection", function(ply)
+hook.Add("PlayerInitialSpawn", "DarkRPLS_connection", function(ply)
 	DLS_checkPlayerDatabase(ply)
     DLS_levelUpPlayer(ply, xp_connections)
 	DLS_updatePlayerName(ply)
@@ -23,7 +23,7 @@ end)
 ----------------------------------
 -------------- Kills -------------
 ----------------------------------
-hook.Add("PlayerDeath", "DrpLS_Death", function(victim, inflictor, attacker)
+hook.Add("PlayerDeath", "DarkRPLS_Death", function(victim, inflictor, attacker)
 	DLS_checkPlayerDatabase(victim)
     DLS_levelUpPlayer(victim, xp_deaths)
 	DLS_updatePlayerName(victim)
@@ -44,7 +44,7 @@ end)
 ----------------------------------
 -------------- Chats -------------
 ----------------------------------
-hook.Add("PlayerSay", "DrpLS_Chat", function(ply)
+hook.Add("PlayerSay", "DarkRPLS_Chat", function(ply)
 	DLS_checkPlayerDatabase(ply)
     DLS_levelUpPlayer(ply, xp_chats)
 	DLS_updatePlayerName(ply)
@@ -57,7 +57,7 @@ end)
 ----------------------------------
 ------------- Physgun ------------
 ----------------------------------
-hook.Add("PhysgunPickup", "DrpLS_Physgun", function(ply)
+hook.Add("PhysgunPickup", "DarkRPLS_Physgun", function(ply)
 	DLS_checkPlayerDatabase(ply)
     DLS_levelUpPlayer(ply, xp_physgun)
 	DLS_updatePlayerName(ply)

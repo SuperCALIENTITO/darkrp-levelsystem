@@ -6,11 +6,27 @@ darkrp_ls.db = "darkrp_levelsystem"
 ------------- Convars ------------
 ----------------------------------
 if SERVER then
+
+-- Generic convars
 CreateConVar("darkrp_ls_connections", "15", {FCVAR_ARCHIVE, FCVAR_NOTIFY}, "The amount of xp to get when a player connects.")
 CreateConVar("darkrp_ls_kills", "15", {FCVAR_ARCHIVE, FCVAR_NOTIFY}, "The amount of xp to get when a player kills someone.")
 CreateConVar("darkrp_ls_deaths", "3", {FCVAR_ARCHIVE, FCVAR_NOTIFY}, "The amount of xp to get when a player dies.")
 CreateConVar("darkrp_ls_chats", "1", {FCVAR_ARCHIVE, FCVAR_NOTIFY}, "The amount of xp to get when a player talks.")
 CreateConVar("darkrp_ls_physgun", "2", {FCVAR_ARCHIVE, FCVAR_NOTIFY}, "The amount of xp to get when a player uses the physgun.")
+
+-- DarkRP convars
+CreateConVar("darkrp_ls_buy_shipment", "25", {FCVAR_ARCHIVE, FCVAR_NOTIFY}, "The amount of xp to get when a buys a shipment.")
+CreateConVar("darkrp_ls_buy_ammo", "2", {FCVAR_ARCHIVE, FCVAR_NOTIFY}, "The amount of xp to get when a buys ammo.")
+CreateConVar("darkrp_ls_buy_vehicle", "10", {FCVAR_ARCHIVE, FCVAR_NOTIFY}, "The amount of xp to get when a buys a vehicle.")
+CreateConVar("darkrp_ls_buy_weapon", "5", {FCVAR_ARCHIVE, FCVAR_NOTIFY}, "The amount of xp to get when a buys a weapon.")
+CreateConVar("darkrp_ls_buy_door", "15", {FCVAR_ARCHIVE, FCVAR_NOTIFY}, "The amount of xp to get when a buys a door.")
+CreateConVar("darkrp_ls_player_arrested", "2", {FCVAR_ARCHIVE, FCVAR_NOTIFY}, "The amount of xp to get when a player is arrested.")
+CreateConVar("darkrp_ls_player_arrest", "10", {FCVAR_ARCHIVE, FCVAR_NOTIFY}, "The amount of xp to get when a player arrests someone.")
+CreateConVar("darkrp_ls_player_salary", "1", {FCVAR_ARCHIVE, FCVAR_NOTIFY}, "The amount of xp to get when a player gets paid.")
+CreateConVar("darkrp_ls_player_lockpick", "10", {FCVAR_ARCHIVE, FCVAR_NOTIFY}, "The amount of xp to get when a player lockpick a door.")
+CreateConvar("darkrp_ls_player_hit_success", "60", {FCVAR_ARCHIVE, FCVAR_NOTIFY}, "The amount of xp to get when a player hits someone successfully.")
+CreateConvar("darkrp_ls_player_hit_fail", "15", {FCVAR_ARCHIVE, FCVAR_NOTIFY}, "The amount of xp to get when a player hits someone unsuccessfully.")
+CreateConVar("darkrp_ls_player_license", "10", {FCVAR_ARCHIVE, FCVAR_NOTIFY}, "The amount of xp to get when a player gets a license.")
 end
 
 CreateClientConVar("darkrp_ls_notify", "1", true, true, "Should the player be notified when they level up?")
