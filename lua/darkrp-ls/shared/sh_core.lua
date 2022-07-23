@@ -25,6 +25,11 @@ end
 function DLS_levelUpPlayer(ply, xp_type)
     local xp = tonumber(sql.Query("SELECT xp FROM " .. darkrp_ls.db .. " WHERE player = " .. ply:SteamID64() .. ";")[1]["xp"]) + xp_type
     local xp_total = DLS_getLevelExp(DLS_getLevelPlayer(ply))
+    local level = DLS_getLevelPlayer(ply)
+
+    if level == #darkrp_ls["levels"] then
+        sql.Query("UPDATE " .. darkrp_ls.db .. " SET level = " .. #darkrp_ls["levels"] .. ", xp " .. sql.SQLStr(xp-xp_total) .. " WHERE player = " .. ply:SteamID64() .. ";")
+    end
 
     if xp > xp_total then
         sql.Query("UPDATE " .. darkrp_ls.db .. " SET level = " .. sql.SQLStr(DLS_getLevelPlayer(ply) + 1) .. ", xp = 0 WHERE player = " .. ply:SteamID64() .. ";")
