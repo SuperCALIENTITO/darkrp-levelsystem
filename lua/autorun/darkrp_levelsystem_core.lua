@@ -1,5 +1,3 @@
-if GAMEMODE_NAME != "darkrp" then return end
-
 darkrp_ls = {}
 darkrp_ls.language = {}
 darkrp_ls.db = "darkrp_levelsystem"
@@ -26,8 +24,8 @@ CreateConVar("darkrp_ls_player_arrested", "2", {FCVAR_ARCHIVE, FCVAR_NOTIFY}, "T
 CreateConVar("darkrp_ls_player_arrest", "10", {FCVAR_ARCHIVE, FCVAR_NOTIFY}, "The amount of xp to get when a player arrests someone.")
 CreateConVar("darkrp_ls_player_salary", "1", {FCVAR_ARCHIVE, FCVAR_NOTIFY}, "The amount of xp to get when a player gets paid.")
 CreateConVar("darkrp_ls_player_lockpick", "10", {FCVAR_ARCHIVE, FCVAR_NOTIFY}, "The amount of xp to get when a player lockpick a door.")
-CreateConvar("darkrp_ls_player_hit_success", "60", {FCVAR_ARCHIVE, FCVAR_NOTIFY}, "The amount of xp to get when a player hits someone successfully.")
-CreateConvar("darkrp_ls_player_hit_fail", "15", {FCVAR_ARCHIVE, FCVAR_NOTIFY}, "The amount of xp to get when a player hits someone unsuccessfully.")
+CreateConVar("darkrp_ls_player_hit_success", "60", {FCVAR_ARCHIVE, FCVAR_NOTIFY}, "The amount of xp to get when a player hits someone successfully.")
+CreateConVar("darkrp_ls_player_hit_fail", "15", {FCVAR_ARCHIVE, FCVAR_NOTIFY}, "The amount of xp to get when a player hits someone unsuccessfully.")
 CreateConVar("darkrp_ls_player_license", "10", {FCVAR_ARCHIVE, FCVAR_NOTIFY}, "The amount of xp to get when a player gets a license.")
 end
 
@@ -37,7 +35,7 @@ CreateClientConVar("darkrp_ls_notify_chat", "0", true, true, "Should the player 
 
 
 if SERVER and not sql.TableExists(darkrp_ls.db) then
-    sql.Query([[CREATE TABLE IF NOT EXISTS]] .. darkrp_ls.db .. [[(
+    sql.Query([[CREATE TABLE IF NOT EXISTS ]] .. darkrp_ls.db .. [[(
         id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
         player INTEGER NOT NULL,
         plyname VARCHAR(255) NOT NULL,

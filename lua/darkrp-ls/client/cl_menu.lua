@@ -50,7 +50,7 @@ net.Receive("darkrp_levelsystem_net", function()
     local s4Label = vgui.Create("DLabel", sFrame)
     s4Label:SetPos(24, 90)
     s4Label:SetSize(285, 16)
-    s4Label:SetText(DLS_GetLanguage("level") .. ": " .. level .. "/" .. #sbox_ls["levels"])
+    s4Label:SetText(DLS_GetLanguage("level") .. ": " .. level .. "/" .. #darkrp_ls["levels"])
 
     local s4Icon = vgui.Create("DImage", sFrame)
     s4Icon:SetPos(5, 90)
