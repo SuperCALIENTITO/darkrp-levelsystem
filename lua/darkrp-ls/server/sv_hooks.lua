@@ -23,14 +23,14 @@ end)
 ----------------------------------
 -------------- Kills -------------
 ----------------------------------
-hook.Add("PlayerDeath", "DarkRPLS_Death", function(victim, _, attacker)
+hook.Add("PlayerDeath", "DarkRPLS_Death", function(victim, inflictor, attacker)
     DLS_checkPlayerDatabase(victim)
     DLS_levelUpPlayer(victim, xp_deaths)
     DLS_updatePlayerName(victim)
 
     victim:SetNWInt("darkrp_ls_level", DLS_getLevelPlayer(victim))
 
-    if attacker:IsPlayer() and (victim ~= attacker) then
+    if inflictor:IsPlayer() and (victim ~= attacker) then
         DLS_checkPlayerDatabase(attacker)
         DLS_levelUpPlayer(attacker, xp_kills)
         DLS_updatePlayerName(attacker)
