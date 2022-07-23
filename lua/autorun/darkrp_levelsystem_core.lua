@@ -1,3 +1,5 @@
+if GAMEMODE_NAME != "darkrp" then return end
+
 darkrp_ls = {}
 darkrp_ls.language = {}
 darkrp_ls.db = "darkrp_levelsystem"
