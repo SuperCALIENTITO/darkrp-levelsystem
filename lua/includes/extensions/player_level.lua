@@ -22,11 +22,33 @@ function meta:GetPlayerXP()
 end
 
 --[[---------------------------------------------------------
+    Name: GetPlayerXPToNextLevel
+    Desc: Returns the player's XP to next level
+-----------------------------------------------------------]]
+function meta:GetPlayerXPToNextLevel()
+    if ( not self:IsPlayer() ) then return 0 end
+    local xp = self:GetPlayerXP()
+    local xp_total = DLS_getLevelExp(self:GetPlayerLevel())
+
+    return tonumber(xp_total - xp)
+end
+
+--[[---------------------------------------------------------
+    Name: IsPlayerLevelEqualTo
+    Desc: Returns if the player's level is equal to the given level
+-----------------------------------------------------------]]
+function meta:IsPlayerLevelEqualTo(level)
+    if ( not self:IsPlayer() ) then return false end
+
+    return tonumber(self:GetPlayerLevel()) == tonumber(level)
+end
+
+--[[---------------------------------------------------------
     Name: IsPlayerLevelMoreThan
     Desc: Returns if the player's level is more than the given level
 -----------------------------------------------------------]]
 function meta:IsPlayerLevelMoreThan(level)
-    return self:GetPlayerLevel() > level
+    return self:GetPlayerLevel() >= level
 end
 
 --[[---------------------------------------------------------
@@ -34,5 +56,5 @@ end
     Desc: Returns if the player's level is less than the given level
 -----------------------------------------------------------]]
 function meta:IsPlayerLevelLessThan(level)
-    return self:GetPlayerLevel() < level
+    return self:GetPlayerLevel() <= level
 end
