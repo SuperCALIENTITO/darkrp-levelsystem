@@ -8,7 +8,7 @@ if ( not meta ) then return end
 function meta:GetPlayerLevel()
     if ( not self:IsPlayer() ) then return 1 end
 
-    return self:GetNWInt("darkrp_ls_level")
+    return tonumber(self:GetNWInt("darkrp_ls_level"))
 end
 
 --[[---------------------------------------------------------
@@ -18,7 +18,7 @@ end
 function meta:GetPlayerXP()
     if ( not self:IsPlayer() ) then return 0 end
 
-    return self:GetNWInt("darkrp_ls_xp")
+    return tonumber(self:GetNWInt("darkrp_ls_xp"))
 end
 
 --[[---------------------------------------------------------
