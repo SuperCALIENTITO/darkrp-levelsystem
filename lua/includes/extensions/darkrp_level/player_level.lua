@@ -1,3 +1,5 @@
+AddCSLuaFile()
+
 local meta = FindMetaTable("Player")
 if ( not meta ) then return end
 
@@ -56,5 +58,5 @@ end
     Desc: Returns if the player's level is less than the given level
 -----------------------------------------------------------]]
 function meta:IsPlayerLevelLessThan(level)
-    return self:GetPlayerLevel() < level
+    return self:GetPlayerLevel() <= level
 end
