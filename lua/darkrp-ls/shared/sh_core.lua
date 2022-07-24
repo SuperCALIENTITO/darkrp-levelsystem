@@ -47,3 +47,18 @@ end
 function DLS_updatePlayerName(ply)
     sql.Query("UPDATE " .. darkrp_ls.db .. " SET plyname = " .. sql.SQLStr(ply:Name()) .. " WHERE player = " .. ply:SteamID64() .. ";")
 end
+
+----------------------------------
+------------ Hooks ---------------
+----------------------------------
+local DarkRP_LS = {}
+function DarkRP_LS:IsValid()
+    return true
+end
+
+function DarkRP_LS:PlayerLevelUp(ply)
+    print("DLS_levelUpPlayer", self, ply)
+end
+
+hook.Add("DLS_levelUpPlayer", "DarkRP_LS", DarkRP_LS.PlayerLevelUp)
+
