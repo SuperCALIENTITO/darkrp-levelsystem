@@ -10,6 +10,11 @@ function DLS_getLevelPlayer(ply)
     end
 end
 
+function DLS_getXPPlayer(ply)
+    local data = sql.Query("SELECT xp FROM " .. darkrp_ls.db .. " WHERE player = " .. ply:SteamID64() .. ";")
+    return tonumber(data[1].xp)
+end
+
 function DLS_getLevelExp(level)
     local xp = darkrp_ls["levels"][level]
     return tonumber(xp)
