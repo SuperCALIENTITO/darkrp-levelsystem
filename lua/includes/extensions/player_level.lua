@@ -30,7 +30,7 @@ function meta:GetPlayerXPToNextLevel()
     local xp = self:GetPlayerXP()
     local xp_total = DLS_getLevelExp(self:GetPlayerLevel())
 
-    return tonumber(xp_total - xp)
+    return xp_total-xp
 end
 
 --[[---------------------------------------------------------
@@ -40,7 +40,7 @@ end
 function meta:IsPlayerLevelEqualTo(level)
     if ( not self:IsPlayer() ) then return false end
 
-    return tonumber(self:GetPlayerLevel()) == tonumber(level)
+    return tonumber(self:GetPlayerLevel()) == level
 end
 
 --[[---------------------------------------------------------
