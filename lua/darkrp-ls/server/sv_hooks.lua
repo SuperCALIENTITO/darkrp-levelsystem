@@ -30,7 +30,7 @@ hook.Add("PlayerDeath", "DarkRPLS_Death", function(victim, inflictor, attacker)
     DLS_updatePlayerName(victim)
 
     victim:SetNWInt("darkrp_ls_level", DLS_getLevelPlayer(victim))
-    victim:SetNWInt("darkrp_ls_xp", DLS_getXPPlayer(ply))
+    victim:SetNWInt("darkrp_ls_xp", DLS_getXPPlayer(victim))
 
     if inflictor:IsPlayer() and (victim ~= attacker) then
         DLS_checkPlayerDatabase(attacker)
@@ -38,7 +38,7 @@ hook.Add("PlayerDeath", "DarkRPLS_Death", function(victim, inflictor, attacker)
         DLS_updatePlayerName(attacker)
 
         attacker:SetNWInt("darkrp_ls_level", DLS_getLevelPlayer(attacker))
-        attacker:SetNWInt("darkrp_ls_xp", DLS_getXPPlayer(ply))
+        attacker:SetNWInt("darkrp_ls_xp", DLS_getXPPlayer(attacker))
     end
     return
 end)
