@@ -11,6 +11,8 @@ function meta:GetPlayerLevel()
     return tonumber(self:GetNWInt("darkrp_ls_level"))
 end
 
+
+
 --[[---------------------------------------------------------
     Name: GetPlayerXP
     Desc: Returns the player's XP
@@ -20,6 +22,8 @@ function meta:GetPlayerXP()
 
     return tonumber(self:GetNWInt("darkrp_ls_xp"))
 end
+
+
 
 --[[---------------------------------------------------------
     Name: GetPlayerXPToNextLevel
@@ -33,6 +37,34 @@ function meta:GetPlayerXPToNextLevel()
     return xp_total-xp
 end
 
+
+
+--[[---------------------------------------------------------
+    Name: SetPlayerLevel
+    Desc: Sets the player's level
+-----------------------------------------------------------]]
+function meta:SetPlayerLevel(level)
+    if ( not self:IsPlayer() ) then return false end
+
+    self:SetNWInt("darkrp_ls_level", level)
+    return true
+end
+
+
+
+--[[---------------------------------------------------------
+    Name: SetPlayerXP
+    Desc: Sets the player's XP
+-----------------------------------------------------------]]
+function meta:SetPlayerXP(xp)
+    if ( not self:IsPlayer() ) then return false end
+
+    self:SetNWInt("darkrp_ls_xp", xp)
+    return true
+end
+
+
+
 --[[---------------------------------------------------------
     Name: IsPlayerLevelEqualTo
     Desc: Returns if the player's level is equal to the given level
@@ -42,6 +74,8 @@ function meta:IsPlayerLevelEqualTo(level)
 
     return tonumber(self:GetPlayerLevel()) == level
 end
+
+
 
 --[[---------------------------------------------------------
     Name: IsPlayerLevelMoreThan
@@ -53,6 +87,8 @@ function meta:IsPlayerLevelMoreThan(level)
     return self:GetPlayerLevel() >= level
 end
 
+
+
 --[[---------------------------------------------------------
     Name: IsPlayerLevelLessThan
     Desc: Returns if the player's level is less than the given level
@@ -63,6 +99,8 @@ function meta:IsPlayerLevelLessThan(level)
     return self:GetPlayerLevel() <= level
 end
 
+
+
 --[[---------------------------------------------------------
     Name: IsPlayerLevelBetween
     Desc: Returns if the player's level is between the given levels
@@ -72,6 +110,8 @@ function meta:IsPlayerLevelBetween(level1, level2)
 
     return self:GetPlayerLevel() >= level1 and self:GetPlayerLevel() <= level2
 end
+
+
 
 --[[---------------------------------------------------------
     Name: AddXP
@@ -84,6 +124,8 @@ function meta:AddXP(xp)
     DLS_addXPToPlayer(self, xp)
     return true
 end
+
+
 
 --[[---------------------------------------------------------
     Name: AddPercentageXP

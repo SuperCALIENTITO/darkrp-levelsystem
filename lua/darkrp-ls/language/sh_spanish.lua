@@ -7,4 +7,6 @@ darkrp_ls.language["spanish"] = {
     ["level"] = "Nivel",
     ["xp"] = "Experiencia",
     ["progress"] = "Progreso",
+
+    ["prefix"] = "[DarkRP-LS]",
 }
