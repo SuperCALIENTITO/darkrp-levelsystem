@@ -68,6 +68,8 @@ end
     Desc: Returns if the player's level is between the given levels
 -----------------------------------------------------------]]
 function meta:IsPlayerLevelBetween(level1, level2)
+    if ( not level1 ) then return false end
+
     return self:GetPlayerLevel() >= level1 and self:GetPlayerLevel() <= level2
 end
 
