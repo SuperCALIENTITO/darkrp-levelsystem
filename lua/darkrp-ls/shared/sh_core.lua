@@ -28,6 +28,11 @@ function DLS_checkPlayerDatabase(ply)
 end
 
 function DLS_addXPToPlayer(ply, xp)
+    if table.HasValue(darkrp_ls.vip_group, ply:GetUserGroup()) then
+        xp = math.Round(xp * darkrp_ls.vip_multiplier)
+    end
+
+
     local xp = tonumber(sql.Query("SELECT xp FROM " .. darkrp_ls.db .. " WHERE player = " .. ply:SteamID64() .. ";")[1]["xp"]) + xp
     local xp_total = DLS_getLevelExp(DLS_getLevelPlayer(ply))
     local level = DLS_getLevelPlayer(ply)
