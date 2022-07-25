@@ -27,8 +27,8 @@ function DLS_checkPlayerDatabase(ply)
     end
 end
 
-function DLS_levelUpPlayer(ply, xp_type)
-    local xp = tonumber(sql.Query("SELECT xp FROM " .. darkrp_ls.db .. " WHERE player = " .. ply:SteamID64() .. ";")[1]["xp"]) + xp_type
+function DLS_addXPToPlayer(ply, xp)
+    local xp = tonumber(sql.Query("SELECT xp FROM " .. darkrp_ls.db .. " WHERE player = " .. ply:SteamID64() .. ";")[1]["xp"]) + xp
     local xp_total = DLS_getLevelExp(DLS_getLevelPlayer(ply))
     local level = DLS_getLevelPlayer(ply)
 

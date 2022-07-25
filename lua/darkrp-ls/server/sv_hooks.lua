@@ -12,7 +12,7 @@ local xp_connections = GetConVar("darkrp_ls_connections"):GetInt()
 ----------------------------------
 hook.Add("PlayerInitialSpawn", "DarkRPLS_connection", function(ply)
     DLS_checkPlayerDatabase(ply)
-    DLS_levelUpPlayer(ply, xp_connections)
+    DLS_addXPToPlayer(ply, xp_connections)
     DLS_updatePlayerName(ply)
 
     ply:SetNWInt("darkrp_ls_level", DLS_getLevelPlayer(ply))
@@ -26,7 +26,7 @@ end)
 ----------------------------------
 hook.Add("PlayerDeath", "DarkRPLS_Death", function(victim, inflictor, attacker)
     DLS_checkPlayerDatabase(victim)
-    DLS_levelUpPlayer(victim, xp_deaths)
+    DLS_addXPToPlayer(victim, xp_deaths)
     DLS_updatePlayerName(victim)
 
     victim:SetNWInt("darkrp_ls_level", DLS_getLevelPlayer(victim))
@@ -34,7 +34,7 @@ hook.Add("PlayerDeath", "DarkRPLS_Death", function(victim, inflictor, attacker)
 
     if inflictor:IsPlayer() and (victim ~= attacker) then
         DLS_checkPlayerDatabase(attacker)
-        DLS_levelUpPlayer(attacker, xp_kills)
+        DLS_addXPToPlayer(attacker, xp_kills)
         DLS_updatePlayerName(attacker)
 
         attacker:SetNWInt("darkrp_ls_level", DLS_getLevelPlayer(attacker))
@@ -49,7 +49,7 @@ end)
 ----------------------------------
 hook.Add("PlayerSay", "DarkRPLS_Chat", function(ply)
     DLS_checkPlayerDatabase(ply)
-    DLS_levelUpPlayer(ply, xp_chats)
+    DLS_addXPToPlayer(ply, xp_chats)
     DLS_updatePlayerName(ply)
 
     ply:SetNWInt("darkrp_ls_level", DLS_getLevelPlayer(ply))
@@ -63,7 +63,7 @@ end)
 ----------------------------------
 hook.Add("PhysgunPickup", "DarkRPLS_Physgun", function(ply)
     DLS_checkPlayerDatabase(ply)
-    DLS_levelUpPlayer(ply, xp_physgun)
+    DLS_addXPToPlayer(ply, xp_physgun)
     DLS_updatePlayerName(ply)
 
     ply:SetNWInt("darkrp_ls_level", DLS_getLevelPlayer(ply))
