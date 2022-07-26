@@ -28,6 +28,7 @@ function DLS_checkPlayerDatabase(ply)
 end
 
 function DLS_addXPToPlayer(ply, xp)
+    local xp = 0
     if table.HasValue(darkrp_ls.vip_group, ply:GetUserGroup()) then
         xp = math.Round(xp * darkrp_ls.vip_multiplier)
     end
