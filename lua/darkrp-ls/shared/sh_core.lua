@@ -42,7 +42,7 @@ function DLS_addXPToPlayer(ply, xp)
     end
 
     if xp > xp_total then
-        sql.Query("UPDATE " .. darkrp_ls.db .. " SET level = " .. sql.SQLStr(DLS_getLevelPlayer(ply) + 1) .. ", xp = 0 WHERE player = " .. ply:SteamID64() .. ";")
+        sql.Query("UPDATE " .. darkrp_ls.db .. " SET level = " .. sql.SQLStr(DLS_getLevelPlayer(ply) + 1) .. " WHERE player = " .. ply:SteamID64() .. ";")
         sql.Query("UPDATE " .. darkrp_ls.db .. " SET xp = " .. sql.SQLStr(xp-xp_total) .. " WHERE player = " .. ply:SteamID64() .. ";")
     else
         sql.Query("UPDATE " .. darkrp_ls.db .. " SET xp = " .. xp .. " WHERE player = " .. ply:SteamID64() .. ";")
