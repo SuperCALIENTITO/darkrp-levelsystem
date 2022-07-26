@@ -16,9 +16,10 @@
 --------- Generic Config ---------
 ----------------------------------
 darkrp_ls.prefix = "[DarkRP-LS]" -- The prefix on the chat.
-darkrp_ls.prefix_color = Color(0, 255, 0) -- The color of the prefix.
+darkrp_ls.prefix_color = Color(91, 123, 227) -- The color of the prefix.
 darkrp_ls.level_name = "Level" -- The name of the level.
 darkrp_ls.command = "!level" -- The command to use. (can also be a table) { "!level", "!levels" }
+darkrp_ls.db = "darkrp_levelsystem" -- The database name.
 
 
 ----------------------------------

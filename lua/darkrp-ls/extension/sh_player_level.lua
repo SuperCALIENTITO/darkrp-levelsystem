@@ -45,6 +45,7 @@ end
 -----------------------------------------------------------]]
 function meta:SetPlayerLevel(level)
     if ( not self:IsPlayer() ) then return false end
+    if ( not level or isnumber(level) == false ) then return false end
 
     self:SetNWInt("darkrp_ls_level", level)
     return true
@@ -58,6 +59,7 @@ end
 -----------------------------------------------------------]]
 function meta:SetPlayerXP(xp)
     if ( not self:IsPlayer() ) then return false end
+    if ( not xp or isnumber(xp) == false ) then return false end
 
     self:SetNWInt("darkrp_ls_xp", xp)
     return true
@@ -70,7 +72,8 @@ end
     Desc: Returns if the player's level is equal to the given level
 -----------------------------------------------------------]]
 function meta:IsPlayerLevelEqualTo(level)
-    if ( not level ) then return false end
+    if ( not self:IsPlayer() ) then return false end
+    if ( not level or isnumber(level) ) then return false end
 
     return tonumber(self:GetPlayerLevel()) == level
 end
@@ -82,7 +85,8 @@ end
     Desc: Returns if the player's level is more than the given level
 -----------------------------------------------------------]]
 function meta:IsPlayerLevelMoreThan(level)
-    if ( not level ) then return false end
+    if ( not self:IsPlayer() ) then return false end
+    if ( not level or isnumber(level) ) then return false end
 
     return self:GetPlayerLevel() >= level
 end
@@ -94,7 +98,8 @@ end
     Desc: Returns if the player's level is less than the given level
 -----------------------------------------------------------]]
 function meta:IsPlayerLevelLessThan(level)
-    if ( not level ) then return false end
+    if ( not self:IsPlayer() ) then return false end
+    if ( not level or isnumber(level) ) then return false end
 
     return self:GetPlayerLevel() <= level
 end
@@ -106,7 +111,9 @@ end
     Desc: Returns if the player's level is between the given levels
 -----------------------------------------------------------]]
 function meta:IsPlayerLevelBetween(level1, level2)
-    if ( not level1 ) then return false end
+    if ( not self:IsPlayer() ) then return false end
+    if ( not level1 or isnumber(level1) ) then return false end
+    if ( not level2 or isnumber(level2) ) then return false end
 
     return self:GetPlayerLevel() >= level1 and self:GetPlayerLevel() <= level2
 end
@@ -119,7 +126,7 @@ end
 -----------------------------------------------------------]]
 function meta:AddXP(xp)
     if ( not self:IsPlayer() ) then return false end
-    if ( not xp ) then return false end
+    if ( not xp or isnumber(xp) ) then return false end
 
     DLS_addXPToPlayer(self, xp)
     return true
@@ -133,7 +140,7 @@ end
 -----------------------------------------------------------]]
 function meta:AddPercentageXP(xp)
     if ( not self:IsPlayer() ) then return false end
-    if ( not xp ) then return false end
+    if ( not xp or isnumber(xp) ) then return false end
 
     if xp > 1 then
         xp = xp/100
