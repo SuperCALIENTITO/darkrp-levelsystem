@@ -8,7 +8,7 @@ if ( not meta ) then return end
 function meta:GetPlayerLevel()
     if ( not self:IsPlayer() ) then return 1 end
 
-    return tonumber(self:GetNWInt("darkrp_ls_level"))
+    return DLS_getPlayerLeveL(self)
 end
 
 
@@ -20,7 +20,7 @@ end
 function meta:GetPlayerXP()
     if ( not self:IsPlayer() ) then return 0 end
 
-    return tonumber(self:GetNWInt("darkrp_ls_xp"))
+    return DLS_getPlayerXP(self)
 end
 
 
@@ -31,10 +31,12 @@ end
 -----------------------------------------------------------]]
 function meta:GetPlayerXPToNextLevel()
     if ( not self:IsPlayer() ) then return 0 end
-    local xp = self:GetPlayerXP()
-    local xp_total = DLS_getLevelExp(self:GetPlayerLevel())
 
-    return xp_total-xp
+    local level = self:GetPlayerLevel()
+    local xp = self:GetPlayerXP()
+    local xp_total = DLS_getLevelXP(level)
+
+    return xp_total - xp
 end
 
 
@@ -47,8 +49,7 @@ function meta:SetPlayerLevel(level)
     if ( not self:IsPlayer() ) then return false end
     if ( not level and isnumber(level) == false) then return false end
 
-    DLS_setLevelPlayer(self, level)
-    return true
+    DLS_setPlayerLevel(self, level)
 end
 
 
@@ -61,7 +62,7 @@ function meta:SetPlayerXP(xp)
     if ( not self:IsPlayer() ) then return false end
     if ( not xp or not isnumber(xp) ) then return false end
 
-    DLS_setXPPlayer(self, xp)
+    DLS_setPlayerXP(self, xp)
     return true
 end
 
@@ -73,8 +74,6 @@ end
 -----------------------------------------------------------]]
 function meta:IsPlayerLevelEqualTo(level)
     if ( not self:IsPlayer() ) then return false end
-    if ( not level or not isnumber(level) ) then return false end
-    if ( not DLS_levelExists(level) ) then return false end
 
     return self:GetPlayerLevel() == level
 end
@@ -87,8 +86,6 @@ end
 -----------------------------------------------------------]]
 function meta:IsPlayerLevelMoreThan(level)
     if ( not self:IsPlayer() ) then return false end
-    if ( not level or isnumber(level) ) then return false end
-    if ( not DLS_levelExists(level) ) then return false end
 
     return self:GetPlayerLevel() >= level
 end
@@ -101,8 +98,6 @@ end
 -----------------------------------------------------------]]
 function meta:IsPlayerLevelLessThan(level)
     if ( not self:IsPlayer() ) then return false end
-    if ( not level or not DLS_getLevelExp(level) ) then return false end
-    if ( not DLS_levelExists(level) ) then return false end
 
     return self:GetPlayerLevel() <= level
 end
@@ -115,10 +110,6 @@ end
 -----------------------------------------------------------]]
 function meta:IsPlayerLevelBetween(level1, level2)
     if ( not self:IsPlayer() ) then return false end
-    if ( not level1 or not DLS_getLevelExp(level1) ) then return false end
-    if ( not level2 or not DLS_getLevelExp(level2) ) then return false end
-    if ( not DLS_levelExists(level1) ) then return false end
-    if ( not DLS_levelExists(level2) ) then return false end
 
     return self:GetPlayerLevel() >= level1 and self:GetPlayerLevel() <= level2
 end

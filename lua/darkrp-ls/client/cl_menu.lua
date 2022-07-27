@@ -3,7 +3,7 @@ net.Receive("darkrp_levelsystem_net", function()
 
     local level = data.level
     local xp = data.xp
-    local xp_total = DLS_getLevelExp(tonumber(level))
+    local xp_total = DLS_getLevelXP(tonumber(level))
 
     ----------------------------------
     ------------- Windows ------------

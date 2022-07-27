@@ -9,4 +9,5 @@ darkrp_ls.language["spanish"] = {
     ["progress"] = "Progreso",
 
     ["prefix"] = "[DarkRP-LS]",
+    ["levelup"] = "ha subido de nivel a",
 }
