@@ -2,7 +2,7 @@
 -------- DarkRP-LS Config --------
 ----------------------------------
 
--- You also can use DLS_GetLanguage(phrase) for translations.
+-- You can use DLS_GetLanguage(phrase) for translations as well.
 --
 -- Example:
 -- darkrp_ls.level_name = DLS_GetLanguage("level")
@@ -56,8 +56,10 @@ darkrp_ls.xp["buy_weapon"] = 5
 darkrp_ls.xp["buy_door"] = 2
 darkrp_ls.xp["player_arrested"] = 2
 darkrp_ls.xp["player_arrest"] = 10
-darkrp_ls.xp["player_salary"] = 1
+darkrp_ls.xp["player_salary"] = 1 -- <-- this option is like a giver of experience every time you get a salary.
 darkrp_ls.xp["player_lockpick"] = 10
 darkrp_ls.xp["player_hit_success"] = 40
 darkrp_ls.xp["player_hit_fail"] = 8
 darkrp_ls.xp["player_license"] = 10
+
+-- if you want to disable one of the experience types, just set it to 0.

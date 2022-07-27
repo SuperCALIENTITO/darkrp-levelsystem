@@ -36,10 +36,14 @@ function DLS_getXPPlayer(ply)
 end
 
 function DLS_getLevelExp(level)
-    if ( not level or not isnumber(level) ) then return 0 end
+    if ( not level ) then return 0 end
+    if ( tonumber(level) == nil ) then return false end
 
-    local xp = darkrp_ls["levels"][level]
-    return tonumber(xp)
+    if ( #darkrp_ls["levels"] > level or 1 > level ) then return 0 end
+        return tonumber(darkrp_ls["levels"][level])
+    else
+        return tonumber(darkrp_ls["levels"][#darkrp_ls["levels"]])
+    end
 end
 
 function DLS_setLevelPlayer(ply, level)
@@ -72,7 +76,6 @@ function DLS_addXPToPlayer(ply, xp)
 
     if level == #darkrp_ls["levels"] then
         DLS_setData(ply, "level", #darkrp_ls["levels"])
-        DLS_setData(ply, "xp", xp-xp_total)
     end
 
     if xp > xp_total then
@@ -86,14 +89,14 @@ function DLS_addXPToPlayer(ply, xp)
 end
 
 function DLS_updatePlayerName(ply)
-    if not IsValid(ply) then return false end
+    if not ply:IsValid() then return false end
 
-    DLS_setData(ply, "name", ply:Nick())
+    sql.Query("UPDATE " .. darkrp_ls.db .. " SET name = " .. sql.SQLStr(ply:Nick()) .. " WHERE player = " .. ply:SteamID64() .. ";")
     return true
 end
 
 function DLS_checkPlayerDatabase(ply)
-    if not IsValid(ply) then return false end
+    if not ply:IsValid() then return false end
 
     local data = sql.Query("SELECT * FROM " .. darkrp_ls.db .. " WHERE player = " .. ply:SteamID64() .. ";")
     if not data then
@@ -101,6 +104,17 @@ function DLS_checkPlayerDatabase(ply)
     end
 
     return true
+end
+
+function DLS_levelExists(level)
+    if not level then return false end
+    if not isnumber(level) then return false end
+
+    if #darkrp_ls["levels"] > level and level >= 1 then
+        return true
+    else
+        return false
+    end
 end
 
 function DLS_XPValues(xp_type)
