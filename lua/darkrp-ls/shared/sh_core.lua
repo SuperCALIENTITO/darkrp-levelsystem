@@ -5,7 +5,7 @@ function DLS_getData(ply, datatype)
     if ( not ply:IsPlayer() ) then return 0 end
     if ( not datatype or isstring(datatype) ) then return 0 end
 
-    return tonumber(sql.Query("SELECT " .. sql.SQLStr(datatype) .. " FROM " .. darkrp_ls.db .. " WHERE steamid = " .. ply:SteamID() .. ";")[1][datatype])
+    return tonumber(sql.Query("SELECT " .. sql.SQLStr(datatype) .. " FROM " .. darkrp_ls.db .. " WHERE player = " .. ply:SteamID64() .. ";")[1][datatype])
 end
 
 function DLS_setData(ply, datatype, value)
@@ -13,7 +13,7 @@ function DLS_setData(ply, datatype, value)
     if ( not datatype or isstring(datatype) ) then return false end
     if ( not value or isstring(value) ) then return false end
 
-    sql.Query("UPDATE " .. darkrp_ls.db .. " SET " .. sql.SQLStr(datatype) .. " = " .. sql.SQLStr(value) .. " WHERE steamid = " .. ply:SteamID() .. ";")
+    sql.Query("UPDATE " .. darkrp_ls.db .. " SET " .. sql.SQLStr(datatype) .. " = " .. sql.SQLStr(value) .. " WHERE player = " .. ply:SteamID64() .. ";")
 
     return true
 end
@@ -21,7 +21,7 @@ end
 function DLS_getLevelPlayer(ply)
     if ( not ply:IsPlayer() ) then return 0 end
 
-    local data = DLS_getData(ply, "level")
+    local data = tonumber(sql.Query("SELECT level FROM " .. darkrp_ls.db .. " WHERE player = " .. ply:SteamID64() .. ";")[1].level)
     if #darkrp_ls["levels"] > data then
         return data
     else
@@ -32,7 +32,7 @@ end
 function DLS_getXPPlayer(ply)
     if ( not ply:IsPlayer() ) then return 0 end
 
-    return DLS_getData(ply, "xp")
+    return tonumber(sql.Query("SELECT xp FROM " .. darkrp_ls.db .. " WHERE player = " .. ply:SteamID64() .. ";")[1].xp)
 end
 
 function DLS_getLevelExp(level)
@@ -60,7 +60,7 @@ end
 
 function DLS_addXPToPlayer(ply, xp)
     if ( not ply:IsPlayer() ) then return false end
-    if ( not level or not isnumber(xp) ) then return false end
+    if ( not isnumber(xp) ) then return false end
 
     if table.HasValue(darkrp_ls.vip_group, ply:GetUserGroup()) then
         xp = math.Round(xp * darkrp_ls.vip_multiplier)
@@ -101,6 +101,17 @@ function DLS_checkPlayerDatabase(ply)
     end
 
     return true
+end
+
+function DLS_XPValues(xp_type)
+    if ( not isstring(xp_type) ) then return 0 end
+
+    if darkrp_ls.use_cvars then
+        return GetConVar("darkrp_ls_" .. xp_type):Int()
+    else
+        return darkrp_ls.xp[xp_type]
+    end
+
 end
 
 ----------------------------------

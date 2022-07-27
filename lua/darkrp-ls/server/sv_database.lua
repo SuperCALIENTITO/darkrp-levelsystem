@@ -1,7 +1,7 @@
 ----------------------------------
 ------------ Database ------------
 ----------------------------------
-if SERVER and not sql.TableExists(darkrp_ls.db) then
+if not sql.TableExists(darkrp_ls.db) then
     sql.Query([[CREATE TABLE IF NOT EXISTS ]] .. darkrp_ls.db .. [[(
         id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
         player INTEGER NOT NULL,
