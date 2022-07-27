@@ -47,7 +47,7 @@ function meta:SetPlayerLevel(level)
     if ( not self:IsPlayer() ) then return false end
     if ( not level and isnumber(level) == false) then return false end
 
-    self:SetNWInt("darkrp_ls_level", level)
+    DLS_setLevelPlayer(self, level)
     return true
 end
 
@@ -61,7 +61,7 @@ function meta:SetPlayerXP(xp)
     if ( not self:IsPlayer() ) then return false end
     if ( not xp or not isnumber(xp) ) then return false end
 
-    self:SetNWInt("darkrp_ls_xp", xp)
+    DLS_setXPPlayer(self, xp)
     return true
 end
 
