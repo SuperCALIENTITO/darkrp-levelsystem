@@ -3,7 +3,7 @@
 ----------------------------------
 
 -- Util --
-function DLS_getPlayerLeveL(ply)
+function DLS_getPlayerLevel(ply)
     local data = tonumber(sql.Query("SELECT level FROM " .. darkrp_ls.db .. " WHERE player = " .. ply:SteamID64() .. ";")[1].level)
     if #darkrp_ls["levels"] > data then
         return data
