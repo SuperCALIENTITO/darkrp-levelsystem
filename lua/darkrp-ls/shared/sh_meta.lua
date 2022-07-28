@@ -8,7 +8,7 @@ if ( not meta ) then return end
 function meta:GetPlayerLevel()
     if ( not self:IsPlayer() ) then return 1 end
 
-    return DLS_getPlayerLevel(self)
+    return DLS_getPlayerLeveL(self)
 end
 
 
@@ -136,12 +136,13 @@ end
 -----------------------------------------------------------]]
 function meta:AddPercentageXP(xp)
     if ( not self:IsPlayer() ) then return false end
+    if ( not xp or isnumber(xp) ) then return false end
 
     if xp > 1 then
         xp = xp/100
     end
 
-    local xp_total = math.Round(DLS_getLevelXP(self:GetPlayerLevel()) * xp)
+    local xp_total = math.Round(DLS_getLevelExp(self:GetPlayerLevel()) * xp)
     DLS_addXPToPlayer(self, xp_total)
     return true
 end
