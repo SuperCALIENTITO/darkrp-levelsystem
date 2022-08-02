@@ -41,10 +41,17 @@ function DLS_setData(ply, datatype, value)
 end
 
 function DLS_addXPToPlayer(ply, xp)
+    local xp = xp
+    local xp_plus = 0
+
+    -- Global Bonus XP
+    if darkrp_ls.global_xp_bonus and ( darkrp_ls.global_xp_bonus_amount >= 1 ) then
+        xp_plus = math.Round(xp * ( 1 + ( darkrp_ls.global_xp_bonus_amount / 100 ) ))
+    end
 
     -- VIPs get a bonus XP
-    if table.HasValue(darkrp_ls.vip_group, ply:GetUserGroup()) then
-        xp = math.Round(xp * darkrp_ls.vip_multiplier)
+    if table.HasValue(darkrp_ls.vip_group, ply:GetUserGroup()) and ( darkrp_ls.vip_enabled ) then
+        xp_plus = math.Round(xp * darkrp_ls.vip_multiplier) + xp_plus
     end
 
     local level = ply:GetPlayerLevel()
@@ -53,15 +60,17 @@ function DLS_addXPToPlayer(ply, xp)
 
     if level == #darkrp_ls["levels"] then
         DLS_setData(ply, "level", #darkrp_ls["levels"])
-        DLS_setData(ply, "xp", xp_s)
+        DLS_setData(ply, "xp", xp-xp_total)
     end
 
     if xp > xp_total then
         ply:SetPlayerLevel(level + 1)
-        ply:SetPlayerXP(xp_s)
-        hook.Call("DLS_LevelUp", nil, ply, level+1)
+        ply:SetPlayerXP(xp-xp_total)
+        hook.Call("onPlayerGetXP", nil, ply, xp)
+        hook.Call("onPlayerLevelUp", nil, ply, DLS_getPlayerLevel(ply))
     else
-        DLS_setData(ply, "xp", xp)
+        ply:SetPlayerXP(xp)
+        hook.Call("onPlayerGetXP", nil, ply, xp)
     end
 end
 
@@ -95,9 +104,4 @@ function DLS_XPValues(xp_type)
     else
         return darkrp_ls.xp[xp_type]
     end
-
 end
-
-----------------------------------
------------- Hooks ---------------
-----------------------------------
