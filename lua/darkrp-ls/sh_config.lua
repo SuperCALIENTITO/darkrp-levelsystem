@@ -25,7 +25,7 @@ darkrp_ls.db = "darkrp_levelsystem" -- The database name.
 darkrp_ls.use_cvars = false -- Use the cvars to give experience?
 darkrp_ls.display_level = true -- Display the level of the player in the chat?
 darkrp_ls.global_xp_bonus = false -- Give global xp bonus?
-darkrp_ls.global_xp_bonus_amount = 0 -- The percentage of the xp bonus.
+darkrp_ls.global_xp_bonus_amount = 1 -- The percentage of the xp bonus.
 
 
 
