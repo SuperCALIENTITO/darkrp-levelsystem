@@ -41,7 +41,6 @@ function DLS_setData(ply, datatype, value)
 end
 
 function DLS_addXPToPlayer(ply, xp)
-    local xp = xp
     local xp_plus = 0
 
     -- Global Bonus XP
@@ -55,7 +54,7 @@ function DLS_addXPToPlayer(ply, xp)
     end
 
     local level = ply:GetPlayerLevel()
-    local xp = ply:GetPlayerXP() + xp
+    local xp = ply:GetPlayerXP() + xp + xp_plus
     local xp_total = ply:GetPlayerXPToNextLevel()
 
     if level == #darkrp_ls["levels"] then
