@@ -8,6 +8,7 @@ CreateConVar("darkrp_ls_kill", "15", {FCVAR_ARCHIVE, FCVAR_NOTIFY}, "The amount 
 CreateConVar("darkrp_ls_death", "3", {FCVAR_ARCHIVE, FCVAR_NOTIFY}, "The amount of xp to get when a player dies.")
 CreateConVar("darkrp_ls_chat", "1", {FCVAR_ARCHIVE, FCVAR_NOTIFY}, "The amount of xp to get when a player talks.")
 CreateConVar("darkrp_ls_physgun", "2", {FCVAR_ARCHIVE, FCVAR_NOTIFY}, "The amount of xp to get when a player uses the physgun.")
+CreateConVar("darkrp_ls_npc_killed", "5", {FCVAR_ARCHIVE, FCVAR_NOTIFY}, "The amount of xp to get when a player kills an NPC.")
 
 -- DarkRP convars
 CreateConVar("darkrp_ls_buy_shipment", "25", {FCVAR_ARCHIVE, FCVAR_NOTIFY}, "The amount of xp to get when a buys a shipment.")

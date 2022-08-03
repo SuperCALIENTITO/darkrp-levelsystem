@@ -1,7 +1,5 @@
 darkrp_ls = {}
 darkrp_ls.xp = {}
-darkrp_ls.prefix = "[DARKRP-LS]"
-darkrp_ls.prestige = {}
 darkrp_ls.language = {}
 
 ----------------------------------

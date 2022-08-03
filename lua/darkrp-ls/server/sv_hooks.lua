@@ -66,3 +66,18 @@ hook.Add("PhysgunPickup", "DarkRPLS_Physgun", function(ply)
     ply:SetNWInt("darkrp_ls_xp", DLS_getPlayerXP(ply))
     return
 end)
+
+
+----------------------------------
+----------- NPC Killed -----------
+----------------------------------
+hook.Add("OnNPCKilled", "DarkRPLS_NPCKilled", function(npc, attacker, inflictor)
+    local xp = DLS_XPValues("npc_killed")
+    DLS_checkPlayerDatabase(attacker)
+    DLS_addXPToPlayer(attacker, xp)
+    DLS_updatePlayerName(attacker)
+
+    attacker:SetNWInt("darkrp_ls_level", DLS_getPlayerLevel(attacker))
+    attacker:SetNWInt("darkrp_ls_xp", DLS_getPlayerXP(attacker))
+    return
+end)

@@ -58,6 +58,7 @@ darkrp_ls.xp["kill"] = 15
 darkrp_ls.xp["death"] = 3
 darkrp_ls.xp["chat"] = 1
 darkrp_ls.xp["physgun"] = 2
+darkrp_ls.xp["npc_killed"] = 5
 
 -- DarkRP Config
 darkrp_ls.xp["buy_shipment"] = 10
@@ -79,6 +80,13 @@ darkrp_ls.xp["player_license"] = 10
 ------------ Prestige ------------
 ----------------------------------
 
-darkrp_ls.prestige.enabled = false -- Enable the prestige system?
-darkrp_ls.prestige.levelup = 100 -- How many levels do you need to prestige?
-darkrp_ls.prestige.prestiges = 10 -- Max amount of prestiges.
+darkrp_ls.prestige_enabled = false -- Enable the prestige system?
+darkrp_ls.prestige_levelup = 100 -- How many levels do you need to prestige?
+darkrp_ls.prestige_prestiges = 10 -- Max amount of prestiges.
+
+
+----------------------------------
+--------- Benefits Config --------
+----------------------------------
+
+darkrp

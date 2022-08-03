@@ -1,25 +1,10 @@
 ----------------------------------
-------------- Values -------------
-----------------------------------
-local xp_buy_shipment = GetConVar("darkrp_ls_buy_shipment"):GetInt()
-local xp_buy_ammo = GetConVar("darkrp_ls_buy_ammo"):GetInt()
-local xp_buy_vehicle = GetConVar("darkrp_ls_buy_vehicle"):GetInt()
-local xp_buy_weapon = GetConVar("darkrp_ls_buy_weapon"):GetInt()
-local xp_buy_door = GetConVar("darkrp_ls_buy_door"):GetInt()
-local xp_player_arrested = GetConVar("darkrp_ls_player_arrested"):GetInt()
-local xp_player_arrest = GetConVar("darkrp_ls_player_arrest"):GetInt()
-local xp_player_salary = GetConVar("darkrp_ls_player_salary"):GetInt()
-local xp_player_lockpick = GetConVar("darkrp_ls_player_lockpick"):GetInt()
-local xp_player_hit_success = GetConVar("darkrp_ls_player_hit_success"):GetInt()
-local xp_player_hit_fail = GetConVar("darkrp_ls_player_hit_fail"):GetInt()
-local xp_player_license = GetConVar("darkrp_ls_player_license"):GetInt()
-
-----------------------------------
 ------------- Shipments ----------
 ----------------------------------
 hook.Add("playerBoughtShipment", "DarkRPLS_PlayerBoughtShipment", function(ply)
+    local xp = DLS_XPValues("buy_shipment")
     DLS_checkPlayerDatabase(ply)
-    DLS_addXPToPlayer(ply, xp_buy_shipment)
+    DLS_addXPToPlayer(ply, xp)
     DLS_updatePlayerName(ply)
 
     ply:SetNWInt("darkrp_ls_level", DLS_getPlayerLevel(ply))
@@ -31,8 +16,9 @@ end)
 ------------- Ammo ---------------
 ----------------------------------
 hook.Add("playerBoughtAmmo", "DarkRPLS_PlayerBoughtAmmo", function(ply)
+    local xp = DLS_XPValues("buy_ammo")
     DLS_checkPlayerDatabase(ply)
-    DLS_addXPToPlayer(ply, xp_buy_ammo)
+    DLS_addXPToPlayer(ply, xp)
     DLS_updatePlayerName(ply)
 
     ply:SetNWInt("darkrp_ls_level", DLS_getPlayerLevel(ply))
@@ -44,8 +30,9 @@ end)
 ------------- Vehicle ------------
 ----------------------------------
 hook.Add("playerBoughtVehicle", "DarkRPLS_PlayerBoughtVehicle", function(ply)
+    local xp = DLS_XPValues("buy_vehicle")
     DLS_checkPlayerDatabase(ply)
-    DLS_addXPToPlayer(ply, xp_buy_vehicle)
+    DLS_addXPToPlayer(ply, xp)
     DLS_updatePlayerName(ply)
 
     ply:SetNWInt("darkrp_ls_level", DLS_getPlayerLevel(ply))
@@ -57,8 +44,9 @@ end)
 ------------- Weapon --------------
 ----------------------------------
 hook.Add("playerBoughtWeapon", "DarkRPLS_PlayerBoughtWeapon", function(ply)
+    local xp = DLS_XPValues("buy_weapon")
     DLS_checkPlayerDatabase(ply)
-    DLS_addXPToPlayer(ply, xp_buy_weapon)
+    DLS_addXPToPlayer(ply, xp)
     DLS_updatePlayerName(ply)
 
     ply:SetNWInt("darkrp_ls_level", DLS_getPlayerLevel(ply))
@@ -70,8 +58,9 @@ end)
 ------------- Door ----------------
 ----------------------------------
 hook.Add("playerBoughtDoor", "DarkRPLS_PlayerBoughtDoor", function(ply)
+    local xp = DLS_XPValues("buy_door")
     DLS_checkPlayerDatabase(ply)
-    DLS_addXPToPlayer(ply, xp_buy_door)
+    DLS_addXPToPlayer(ply, xp)
     DLS_updatePlayerName(ply)
 
     ply:SetNWInt("darkrp_ls_level", DLS_getPlayerLevel(ply))
@@ -83,15 +72,17 @@ end)
 ------------- Arrested -----------
 ----------------------------------
 hook.Add("playerArrested", "DarkRPLS_PlayerArrested", function(criminal, _, police)
+    local xp_criminal = DLS_XPValues("player_arrested")
     DLS_checkPlayerDatabase(criminal)
-    DLS_addXPToPlayer(criminal, xp_player_arrested)
+    DLS_addXPToPlayer(criminal, xp_criminal)
     DLS_updatePlayerName(criminal)
 
     criminal:SetNWInt("darkrp_ls_xp", DLS_getPlayerXP(ply))
 
     if police:IsPlayer() and (criminal ~= police) then
+        local xp_police = DLS_XPValues("player_arrest")
         DLS_checkPlayerDatabase(police)
-        DLS_addXPToPlayer(police, xp_player_arrest)
+        DLS_addXPToPlayer(police, xp_police)
         DLS_updatePlayerName(police)
 
         police:SetNWInt("darkrp_ls_xp", DLS_getPlayerXP(ply))
@@ -103,8 +94,9 @@ end)
 ------------- Salary --------------
 ----------------------------------
 hook.Add("playerGetSalary", "DarkRPLS_PlayerGetSalary", function(ply)
+    local xp = DLS_XPValues("player_salary")
     DLS_checkPlayerDatabase(ply)
-    DLS_addXPToPlayer(ply, xp_player_salary)
+    DLS_addXPToPlayer(ply, xp)
     DLS_updatePlayerName(ply)
 
     ply:SetNWInt("darkrp_ls_level", DLS_getPlayerLevel(ply))
@@ -116,8 +108,9 @@ end)
 ------------- Lockpick ------------
 ----------------------------------
 hook.Add("onLockpickCompleted", "DarkRPLS_PlayerLockpick", function(ply)
+    local xp = DLS_XPValues("player_lockpick")
     DLS_checkPlayerDatabase(ply)
-    DLS_addXPToPlayer(ply, xp_player_lockpick)
+    DLS_addXPToPlayer(ply, xp)
     DLS_updatePlayerName(ply)
 
     ply:SetNWInt("darkrp_ls_level", DLS_getPlayerLevel(ply))
@@ -126,11 +119,12 @@ hook.Add("onLockpickCompleted", "DarkRPLS_PlayerLockpick", function(ply)
 end)
 
 ----------------------------------
-------------- Hit ----------------
+--------------- Hit --------------
 ----------------------------------
 hook.Add("onHitCompleted", "DarkRPLS_PlayerHitSuccess", function(ply)
+    local xp = DLS_XPValues("player_hit_success")
     DLS_checkPlayerDatabase(ply)
-    DLS_addXPToPlayer(ply, xp_player_hit_success)
+    DLS_addXPToPlayer(ply, xp)
     DLS_updatePlayerName(ply)
 
     ply:SetNWInt("darkrp_ls_level", DLS_getPlayerLevel(ply))
@@ -139,8 +133,9 @@ hook.Add("onHitCompleted", "DarkRPLS_PlayerHitSuccess", function(ply)
 end)
 
 hook.Add("onHitFailed", "DarkRPLS_PlayerHitFailed", function(ply)
+    local xp = DLS_XPValues("player_hit_failed")
     DLS_checkPlayerDatabase(ply)
-    DLS_addXPToPlayer(ply, xp_player_hit_fail)
+    DLS_addXPToPlayer(ply, xp)
     DLS_updatePlayerName(ply)
 
     ply:SetNWInt("darkrp_ls_level", DLS_getPlayerLevel(ply))
@@ -149,11 +144,12 @@ hook.Add("onHitFailed", "DarkRPLS_PlayerHitFailed", function(ply)
 end)
 
 ----------------------------------
-------------- License -------------
+------------- License ------------
 ----------------------------------
 hook.Add("playerGotLicense", "DarkRPLS_PlayerBoughtLicense", function(ply)
+    local xp = DLS_XPValues("buy_license")
     DLS_checkPlayerDatabase(ply)
-    DLS_addXPToPlayer(ply, xp_player_license)
+    DLS_addXPToPlayer(ply, xp)
     DLS_updatePlayerName(ply)
 
     ply:SetNWInt("darkrp_ls_level", DLS_getPlayerLevel(ply))

@@ -2,7 +2,10 @@
 ------------ Functions -----------
 ----------------------------------
 
--- Util --
+
+----------------------------------
+-------------- Util --------------
+----------------------------------
 function DLS_getPlayerLevel(ply)
     local data = tonumber(sql.Query("SELECT level FROM " .. darkrp_ls.db .. " WHERE player = " .. ply:SteamID64() .. ";")[1].level)
     if #darkrp_ls["levels"] > data then
@@ -73,8 +76,9 @@ function DLS_addXPToPlayer(ply, xp)
     end
 end
 
-
--- Validators --
+----------------------------------
+----------- Validators -----------
+----------------------------------
 function DLS_updatePlayerName(ply)
     sql.Query("UPDATE " .. darkrp_ls.db .. " SET name = " .. sql.SQLStr(ply:Nick()) .. " WHERE player = " .. ply:SteamID64() .. ";")
 end
