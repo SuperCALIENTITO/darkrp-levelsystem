@@ -1,4 +1,4 @@
-net.Receive("darkrp_levelsystem_net", function()
+net.Receive("darkrp_levelsystem_menu", function()
     local data = net.ReadTable()
 
     local level = data.level

@@ -135,7 +135,7 @@ end
     Desc: Adds a porcentage of XP to the player, the XP is the percentage of the total XP
 -----------------------------------------------------------]]
 function meta:AddPercentageXP(xp)
-    if ( not self:IsPlayer() ) then return false end
+    if ( not self:IsPlayer() ) then return end
 
     if xp > 1 then
         xp = xp/100
@@ -143,5 +143,4 @@ function meta:AddPercentageXP(xp)
 
     local xp_total = math.Round(DLS_getLevelXP(self:GetPlayerLevel()) * xp)
     DLS_addXPToPlayer(self, xp_total)
-    return true
 end

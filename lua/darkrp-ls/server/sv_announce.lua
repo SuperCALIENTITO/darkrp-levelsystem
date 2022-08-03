@@ -1,7 +1,16 @@
-hook.Add("onPlayerLevelUp", "LevelUpLololololol", DLS_AnnounceLevelUp(ply, level)
+util.AddNetworkString("darkrp_levelsystem_levelup")
+hook.Add("onPlayerLevelUp", "LevelUpLololololol", function(ply, level)
     if darkrp_ls.display_level then
+
+        net.Start("darkrp_levelsystem_levelup")
+        net.WriteTable({
+            player = ply:Nick(),
+            level = level,
+        })
+        
         for _, v in ipairs(player.GetAll()) do
-            v:ChatPrint(darkrp_ls.prefix .. " " .. ply:Nick() .. " " .. DLS_GetLanguage("levelup") .. " " .. level.. ".")
+            net.Send(v)
         end
+
     end
 end)

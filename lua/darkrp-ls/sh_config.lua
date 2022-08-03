@@ -42,7 +42,7 @@ darkrp_ls.vip_group = {
     "moderator",
     "admin",
     "superadmin",
-} -- The groups that are VIP.
+}
 darkrp_ls.vip_multiplier = 1.5 -- The multiplier for VIPs.
 
 
