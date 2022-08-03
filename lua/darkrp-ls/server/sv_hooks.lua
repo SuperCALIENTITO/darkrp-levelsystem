@@ -56,14 +56,16 @@ end)
 ----------------------------------
 ------------- Physgun ------------
 ----------------------------------
-hook.Add("PhysgunPickup", "DarkRPLS_Physgun", function(ply)
-    local xp = DLS_XPValues("physgun")
-    DLS_checkPlayerDatabase(ply)
-    DLS_addXPToPlayer(ply, xp)
-    DLS_updatePlayerName(ply)
+hook.Add("PhysgunPickup", "DarkRPLS_Physgun", function(ply, ent)
+    if not ent:IsPlayer() then
+        local xp = DLS_XPValues("physgun")
+        DLS_checkPlayerDatabase(ply)
+        DLS_addXPToPlayer(ply, xp)
+        DLS_updatePlayerName(ply)
 
-    ply:SetNWInt("darkrp_ls_level", DLS_getPlayerLevel(ply))
-    ply:SetNWInt("darkrp_ls_xp", DLS_getPlayerXP(ply))
+        ply:SetNWInt("darkrp_ls_level", DLS_getPlayerLevel(ply))
+        ply:SetNWInt("darkrp_ls_xp", DLS_getPlayerXP(ply))
+    end
     return
 end)
 
