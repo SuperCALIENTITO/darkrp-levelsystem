@@ -1,7 +1,8 @@
 local MODULE = GAS.Logging:MODULE()
 
+-- Level UPs
 MODULE.Category = "DarkRP Level System"
-MODULE.Name = "Level Ups"
+MODULE.Name = "Level UPs"
 MODULE.Colour = Color(55, 195, 227)
 
 MODULE:Setup(function()
@@ -13,3 +14,6 @@ MODULE:Setup(function()
 end)
 
 GAS.Logging:AddModule(MODULE)
+
+
+-- Player Get Experience
