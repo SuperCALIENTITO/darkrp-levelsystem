@@ -59,6 +59,7 @@ darkrp_ls.xp["death"] = 3
 darkrp_ls.xp["chat"] = 1
 darkrp_ls.xp["physgun"] = 2
 darkrp_ls.xp["npc_killed"] = 5
+darkrp_ls.xp["toolgun"] = 1
 
 -- DarkRP Config
 darkrp_ls.xp["buy_shipment"] = 10

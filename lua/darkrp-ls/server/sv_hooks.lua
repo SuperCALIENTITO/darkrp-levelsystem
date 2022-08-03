@@ -72,12 +72,29 @@ end)
 ----------- NPC Killed -----------
 ----------------------------------
 hook.Add("OnNPCKilled", "DarkRPLS_NPCKilled", function(npc, attacker, inflictor)
-    local xp = DLS_XPValues("npc_killed")
-    DLS_checkPlayerDatabase(attacker)
-    DLS_addXPToPlayer(attacker, xp)
-    DLS_updatePlayerName(attacker)
+    if ( npc:IsNPC() or npc:IsNextBot() ) then
+        local xp = DLS_XPValues("npc_killed")
+        DLS_checkPlayerDatabase(attacker)
+        DLS_addXPToPlayer(attacker, xp)
+        DLS_updatePlayerName(attacker)
 
-    attacker:SetNWInt("darkrp_ls_level", DLS_getPlayerLevel(attacker))
-    attacker:SetNWInt("darkrp_ls_xp", DLS_getPlayerXP(attacker))
+        attacker:SetNWInt("darkrp_ls_level", DLS_getPlayerLevel(attacker))
+        attacker:SetNWInt("darkrp_ls_xp", DLS_getPlayerXP(attacker))
+    end
+    return
+end)
+
+
+----------------------------------
+----------- Toolgun -----------
+----------------------------------
+hook.Add("CanTool", "DarkRPLS_Toolgun", function(ply)
+    local xp = DLS_XPValues("toolgun")
+    DLS_checkPlayerDatabase(ply)
+    DLS_addXPToPlayer(ply, xp)
+    DLS_updatePlayerName(ply)
+
+    ply:SetNWInt("darkrp_ls_level", DLS_getPlayerLevel(ply))
+    ply:SetNWInt("darkrp_ls_xp", DLS_getPlayerXP(ply))
     return
 end)
