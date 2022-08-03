@@ -1,5 +1,7 @@
 util.AddNetworkString("darkrp_levelsystem_levelup")
 hook.Add("onPlayerLevelUp", "onPlayerLevelUp", function(ply, level)
+    print("Player " .. ply:Nick() .. " has leveled up to level " .. level)
+
     if darkrp_ls.display_level then
 
         net.Start("darkrp_levelsystem_levelup")
