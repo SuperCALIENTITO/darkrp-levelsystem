@@ -8,7 +8,7 @@ if ( not meta ) then return end
 function meta:GetPlayerLevel()
     if ( not self:IsPlayer() ) then return 1 end
 
-    return DLS_getPlayerLevel(self)
+    return DLS.getPlayerLevel(self)
 end
 
 
@@ -20,7 +20,7 @@ end
 function meta:GetPlayerXP()
     if ( not self:IsPlayer() ) then return 0 end
 
-    return DLS_getPlayerXP(self)
+    return DLS.getPlayerXP(self)
 end
 
 
@@ -34,7 +34,7 @@ function meta:GetPlayerXPToNextLevel()
 
     local level = self:GetPlayerLevel()
     local xp = self:GetPlayerXP()
-    local xp_total = DLS_getLevelXP(level)
+    local xp_total = DLS.getLevelXP(level)
 
     return xp_total - xp
 end
@@ -49,7 +49,7 @@ function meta:SetPlayerLevel(level)
     if ( not self:IsPlayer() ) then return end
     if ( not level and isnumber(level) == false) then return end
 
-    DLS_setPlayerLevel(self, level)
+    DLS.setPlayerLevel(self, level)
 end
 
 
@@ -62,7 +62,7 @@ function meta:SetPlayerXP(xp)
     if ( not self:IsPlayer() ) then return end
     if ( not xp or not isnumber(xp) ) then return end
 
-    DLS_setPlayerXP(self, xp)
+    DLS.setPlayerXP(self, xp)
 end
 
 
@@ -122,13 +122,13 @@ end
 function meta:AddXP(xp)
     if ( not self:IsPlayer() ) then return false end
 
-    DLS_addXPToPlayer(self, xp)
+    DLS.addXPToPlayer(self, xp)
 end
 
 
 
 --[[---------------------------------------------------------
-    Name: AddPercentageXP (Obsolete, use AddXP/Percentage instead)
+    Name: AddPercentageXP (Obsolete, use ply:AddXP(XP*Percentage) instead)
     Desc: Adds a porcentage of XP to the player, the XP is the percentage of the total XP
 -----------------------------------------------------------]]
 function meta:AddPercentageXP(xp)
@@ -138,6 +138,6 @@ function meta:AddPercentageXP(xp)
         xp = xp/100
     end
 
-    local xp_total = math.Round(DLS_getLevelXP(self:GetPlayerLevel()) * xp)
-    DLS_addXPToPlayer(self, xp_total)
+    local xp_total = math.Round(DLS.getLevelXP(self:GetPlayerLevel()) * xp)
+    DLS.addXPToPlayer(self, xp_total)
 end
