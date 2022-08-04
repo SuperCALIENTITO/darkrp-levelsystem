@@ -7,16 +7,21 @@
 -------------- Util --------------
 ----------------------------------
 function DLS_getPlayerLevel(ply)
-    local data = tonumber(sql.Query("SELECT level FROM " .. darkrp_ls.db .. " WHERE player = " .. ply:SteamID64() .. ";")[1].level)
-    if #darkrp_ls["levels"] > data then
-        return data
-    else
-        return tonumber(#darkrp_ls["levels"])
-    end
+    return tonumber(sql.Query("SELECT level FROM " .. darkrp_ls.db .. " WHERE player = " .. ply:SteamID64() .. ";")[1].level)
 end
 
 function DLS_getPlayerXP(ply)
-    return tonumber(sql.Query("SELECT xp FROM " .. darkrp_ls.db .. " WHERE player = " .. ply:SteamID64() .. ";")[1].xp)
+    local xp = tonumber(sql.Query("SELECT xp FROM " .. darkrp_ls.db .. " WHERE player = " .. ply:SteamID64() .. ";")[1].xp)
+    local levels = darkrp_ls["levels"][DLS_getPlayerLevel(ply)]
+    if levels == nil then DLS_setPlayerLevel(ply, #darkrp_ls["levels"]) levels = #darkrp_ls["levels"] end
+
+    if xp > levels then
+        return levels-100
+    elseif xp < 0 then
+        return 1
+    else
+        return xp
+    end
 end
 
 function DLS_setPlayerLevel(ply, level)
@@ -46,33 +51,47 @@ end
 function DLS_addXPToPlayer(ply, xp)
     local xp_plus = 0
 
+    print("--------------")
+
     -- Global Bonus XP
     if darkrp_ls.global_xp_bonus and ( darkrp_ls.global_xp_bonus_amount >= 1 ) then
         xp_plus = math.Round(xp * ( 1 + ( darkrp_ls.global_xp_bonus_amount / 100 ) ))
     end
+    print("XP Global Bonus: " .. xp_plus)
 
     -- VIPs get a bonus XP
     if table.HasValue(darkrp_ls.vip_group, ply:GetUserGroup()) and ( darkrp_ls.vip_enabled ) then
         xp_plus = math.Round(xp * darkrp_ls.vip_multiplier) + xp_plus
     end
 
-    local level = ply:GetPlayerLevel()
-    local xp = ply:GetPlayerXP() + xp + xp_plus
-    local xp_total = ply:GetPlayerXPToNextLevel()
+    print("XP VIP Bonus   : " .. math.Round(xp * darkrp_ls.vip_multiplier))
+    print("XP Plus Total  : " .. xp_plus)
+    print("XP             : " .. xp)
+    print("XP Total       : " .. xp + xp_plus)
+    print("XP Level       : " .. DLS_getPlayerXP(ply))
 
-    if level == #darkrp_ls["levels"] then
-        DLS_setData(ply, "level", #darkrp_ls["levels"])
-        DLS_setData(ply, "xp", xp-xp_total)
-    end
+    local level = DLS_getPlayerLevel(ply)
+    local xp = DLS_getPlayerXP(ply) + xp + xp_plus
+    local xp_total = DLS_getLevelXP(level)
+
+    print("XP Total: " .. xp_total)
+    print("--------------")
 
     if xp > xp_total then
-        ply:SetPlayerLevel(level + 1)
-        ply:SetPlayerXP(xp-xp_total)
-        hook.Call("onPlayerGetXP", nil, ply, xp)
-        hook.Call("onPlayerLevelUp", nil, ply, DLS_getPlayerLevel(ply))
+        DLS_setPlayerXP(ply, xp_total)
+        hook.Call("onPlayerGetXP", nil, ply, xp_total)
+
+        if #darkrp_ls["levels"] > level then
+            DLS_setPlayerLevel(ply, level+1)
+            hook.Call("onPlayerLevelUp", nil, ply, level+1)
+        else
+            DLS_setPlayerLevel(ply, level)
+            DLS_setPlayerXP(ply, 0)
+            hook.Call("onPlayerLevelUp", nil, ply, level)
+        end
+
     else
-        ply:SetPlayerXP(xp)
-        hook.Call("onPlayerGetXP", nil, ply, xp)
+        DLS_setPlayerXP(ply, xp)
     end
 end
 

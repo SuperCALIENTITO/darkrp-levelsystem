@@ -46,8 +46,8 @@ end
     Desc: Sets the player's level
 -----------------------------------------------------------]]
 function meta:SetPlayerLevel(level)
-    if ( not self:IsPlayer() ) then return false end
-    if ( not level and isnumber(level) == false) then return false end
+    if ( not self:IsPlayer() ) then return end
+    if ( not level and isnumber(level) == false) then return end
 
     DLS_setPlayerLevel(self, level)
 end
@@ -59,11 +59,10 @@ end
     Desc: Sets the player's XP
 -----------------------------------------------------------]]
 function meta:SetPlayerXP(xp)
-    if ( not self:IsPlayer() ) then return false end
-    if ( not xp or not isnumber(xp) ) then return false end
+    if ( not self:IsPlayer() ) then return end
+    if ( not xp or not isnumber(xp) ) then return end
 
     DLS_setPlayerXP(self, xp)
-    return true
 end
 
 
@@ -122,16 +121,14 @@ end
 -----------------------------------------------------------]]
 function meta:AddXP(xp)
     if ( not self:IsPlayer() ) then return false end
-    if ( not xp or isnumber(xp) ) then return false end
 
     DLS_addXPToPlayer(self, xp)
-    return true
 end
 
 
 
 --[[---------------------------------------------------------
-    Name: AddPercentageXP
+    Name: AddPercentageXP (Obsolete, use AddXP/Percentage instead)
     Desc: Adds a porcentage of XP to the player, the XP is the percentage of the total XP
 -----------------------------------------------------------]]
 function meta:AddPercentageXP(xp)

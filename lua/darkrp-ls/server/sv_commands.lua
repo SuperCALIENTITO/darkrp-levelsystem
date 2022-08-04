@@ -10,7 +10,6 @@ hook.Add("PlayerSay", "DarkRPLS_commands", function(ply, text)
                         xp = stats[1]["xp"]
                     })
                 net.Send(ply)
-                return ""
             end
         end
     else
@@ -22,9 +21,6 @@ hook.Add("PlayerSay", "DarkRPLS_commands", function(ply, text)
                     xp = stats[1]["xp"]
                 })
             net.Send(ply)
-            return ""
         end
     end
-
-    return text
 end)

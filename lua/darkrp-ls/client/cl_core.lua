@@ -1,8 +1,8 @@
 net.Receive("darkrp_levelsystem_levelup", function()
     local data = net.ReadTable()
 
-    local ply = data.player
-    local level = data.level
+    local name = data.name
+    local level = data.lvl
 
-    chat.AddText(darkrp_ls.prefix_color, darkrp_ls.prefix, " ", Color(255, 255, 255), " ", ply:Nick(), " ", DLS_GetLanguage("levelup"), " ", level)
+    chat.AddText(darkrp_ls.prefix_color, darkrp_ls.prefix, Color(255, 255, 255), " ", name, " ", DLS_GetLanguage("levelup"), " ", level)
 end)
