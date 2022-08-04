@@ -87,8 +87,8 @@ function DLS.addXPToPlayer(ply, xp)
     end
 
     if xp > xp_total then
-        DLS.setPlayerXP(ply, xp_total)
-        hook.Call("onPlayerGetXP", nil, ply, xp_total)
+        DLS.setPlayerXP(ply, xp-xp_total)
+        hook.Call("onPlayerGetXP", nil, ply, xp-xp_total)
 
         if #darkrp_ls["levels"] > level then
             DLS.setPlayerLevel(ply, level+1)
