@@ -51,31 +51,40 @@ end
 function DLS_addXPToPlayer(ply, xp)
     local xp_plus = 0
 
-    print("--------------")
+    if darkrp_ls.debug then
+        print("\n--------------")
+    end
 
     -- Global Bonus XP
-    if darkrp_ls.global_xp_bonus and ( darkrp_ls.global_xp_bonus_amount >= 1 ) then
-        xp_plus = math.Round(xp * ( 1 + ( darkrp_ls.global_xp_bonus_amount / 100 ) ))
+    if darkrp_ls.global_xp and ( darkrp_ls.global_xp_percentage >= 1 ) then
+        xp_plus = math.Round(xp * ( 1 + ( darkrp_ls.global_xp_percentage / 100 ) ))
     end
-    print("XP Global Bonus: " .. xp_plus)
+
+    if darkrp_ls.debug then
+        print("XP Global Bonus: " .. xp_plus)
+    end
 
     -- VIPs get a bonus XP
     if table.HasValue(darkrp_ls.vip_group, ply:GetUserGroup()) and ( darkrp_ls.vip_enabled ) then
         xp_plus = math.Round(xp * darkrp_ls.vip_multiplier) + xp_plus
     end
 
-    print("XP VIP Bonus   : " .. math.Round(xp * darkrp_ls.vip_multiplier))
-    print("XP Plus Total  : " .. xp_plus)
-    print("XP             : " .. xp)
-    print("XP Total       : " .. xp + xp_plus)
-    print("XP Level       : " .. DLS_getPlayerXP(ply))
+    if darkrp_ls.debug then
+        print("XP VIP Bonus   : " .. math.Round(xp * darkrp_ls.vip_multiplier))
+        print("XP Plus Total  : " .. xp_plus)
+        print("XP             : " .. xp)
+        print("XP Total       : " .. xp + xp_plus)
+        print("XP Level       : " .. DLS_getPlayerXP(ply))
+    end
 
     local level = DLS_getPlayerLevel(ply)
     local xp = DLS_getPlayerXP(ply) + xp + xp_plus
     local xp_total = DLS_getLevelXP(level)
 
-    print("XP Total: " .. xp_total)
-    print("--------------")
+    if darkrp_ls.debug then
+        print("XP Total: " .. xp_total)
+        print("--------------")
+    end
 
     if xp > xp_total then
         DLS_setPlayerXP(ply, xp_total)
@@ -121,9 +130,5 @@ function DLS_levelExists(level)
 end
 
 function DLS_XPValues(xp_type)
-    if darkrp_ls.use_cvars then
-        return GetConVar("darkrp_ls_" .. xp_type):Int()
-    else
-        return darkrp_ls.xp[xp_type]
-    end
+    return darkrp_ls.xp[xp_type]
 end

@@ -16,16 +16,16 @@
 --------- Generic Config ---------
 ----------------------------------
 
+darkrp_ls.debug = false
 
-darkrp_ls.prefix = "[DarkRP-LS]" -- The prefix on the chat.
-darkrp_ls.prefix_color = Color(91, 123, 227) -- The color of the prefix.
-darkrp_ls.level_name = "Level" -- The name of the level.
-darkrp_ls.command = "!level" -- The command to use. (can also be a table) { "!level", "!levels" }
-darkrp_ls.db = "darkrp_levelsystem" -- The database name.
-darkrp_ls.use_cvars = false -- Use the cvars to give experience?
-darkrp_ls.display_level = true -- Display the level of the player in the chat?
-darkrp_ls.global_xp_bonus = false -- Give global xp bonus?
-darkrp_ls.global_xp_bonus_amount = 200 -- The percentage of the xp bonus.
+darkrp_ls.prefix                = "[DarkRP-LS]"         -- The prefix on the chat.
+darkrp_ls.prefix_color          = Color(91, 123, 227)   -- The color of the prefix.
+darkrp_ls.level_name            = "Level"               -- The name of the level.
+darkrp_ls.command               = "!level"              -- The command to use. (can also be a table) { "!level", "!levels" }
+darkrp_ls.db                    = "darkrp_levelsystem"  -- The database name.
+darkrp_ls.display_level         = true                  -- Display the level of the player in the chat?
+darkrp_ls.global_xp             = false                 -- Give global xp bonus?
+darkrp_ls.global_xp_percentage  = 200                   -- The percentage of the xp bonus.
 
 
 
@@ -48,7 +48,7 @@ darkrp_ls.vip_multiplier = 2 -- The multiplier for VIPs.
 
 
 ----------------------------------
----------- Level Config ---------- This works only if the darkrp_ls.use_cvars is false.
+---------- Level Config ----------
 ---------------------------------- if you want to disable one of the experience types, just set it to 0.
 
 

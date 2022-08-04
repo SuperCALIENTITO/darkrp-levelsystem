@@ -1,5 +1,8 @@
 hook.Add("onPlayerLevelUp", "onPlayerLevelUp", function(ply, level)
-    print("Player " .. ply:Nick() .. " has leveled up to level " .. level)
+
+    if darkrp_ls.debug then
+        print("[DarkRP_LS] " .. ply:Nick() .. " has leveled up to level " .. level .. "!")
+    end
 
     if darkrp_ls.display_level then
 
