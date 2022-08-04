@@ -1,4 +1,4 @@
-dls = {}
+DLS = {}
 darkrp_ls = {}
 darkrp_ls.xp = {}
 darkrp_ls.language = {}

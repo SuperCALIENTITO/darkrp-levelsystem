@@ -2,10 +2,10 @@
 -------- DarkRP-LS Config --------
 ----------------------------------
 
--- You can use DLS_GetLanguage(phrase) for translations as well.
+-- You can use DLS.GetLanguage(phrase) for translations as well.
 --
 -- Example:
--- darkrp_ls.level_name = DLS_GetLanguage("level")
+-- darkrp_ls.level_name = DLS.GetLanguage("level")
 --
 -- Return:
 -- English: "Level"
