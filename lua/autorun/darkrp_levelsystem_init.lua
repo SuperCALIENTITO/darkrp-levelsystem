@@ -6,9 +6,10 @@ darkrp_ls.language = {}
 ----------------------------------
 --------- Network String ---------
 ----------------------------------
-util.AddNetworkString("darkrp_levelsystem_levelup")
-util.AddNetworkString("darkrp_levelsystem_menu")
-
+if SERVER then
+    util.AddNetworkString("darkrp_levelsystem_levelup")
+    util.AddNetworkString("darkrp_levelsystem_menu")
+end
 
 ----------------------------------
 ------------ Functions -----------
@@ -22,14 +23,14 @@ local function AddFile(file, dir)
     elseif (prefix == "sh_") then
         if SERVER then
             AddCSLuaFile(dir .. file)
-            print("[DARKRP-LS] SHARED ADDCS: " .. dir .. file)
+            print("[DARKRP-LS] SHARED ADDCS:   " .. dir .. file)
         end
         include(dir .. file)
         print("[DARKRP-LS] SHARED INCLUDE: " .. dir .. file)
     elseif (prefix == "cl_") then
         if SERVER then
             AddCSLuaFile(dir .. file)
-            print("[DARKRP-LS] CLIENT ADDCS: " .. dir .. file)
+            print("[DARKRP-LS] CLIENT ADDCS:   " .. dir .. file)
         elseif CLIENT then
             include(dir .. file)
             print("[DARKRP-LS] CLIENT INCLUDE: " .. dir .. file)

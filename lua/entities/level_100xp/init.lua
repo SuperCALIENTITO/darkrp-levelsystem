@@ -17,7 +17,7 @@ function ENT:Use(ply, caller)
         ply:SetPlayerLevel(tonumber(ply:GetPlayerLevel()) + 1)
         self:Remove()
         
-        hook.Call("onPlayerLevelUp", nil, ply, DLS_getPlayerLevel(ply))
+        hook.Call("onPlayerLevelUp", nil, ply, DLS.getPlayerLevel(ply))
         print("[DARKRP-LS] Level UP to " .. ply:Nick())
     end
 end
