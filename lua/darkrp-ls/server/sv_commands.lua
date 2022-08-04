@@ -1,4 +1,3 @@
-util.AddNetworkString("darkrp_levelsystem_menu")
 hook.Add("PlayerSay", "DarkRPLS_commands", function(ply, text)
     if istable(darkrp_ls.command) then
         for k, v in ipairs(darkrp_ls.command) do

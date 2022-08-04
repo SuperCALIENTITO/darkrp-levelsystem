@@ -3,6 +3,13 @@ darkrp_ls.xp = {}
 darkrp_ls.language = {}
 
 ----------------------------------
+--------- Network String ---------
+----------------------------------
+util.AddNetworkString("darkrp_levelsystem_levelup")
+util.AddNetworkString("darkrp_levelsystem_menu")
+
+
+----------------------------------
 ------------ Functions -----------
 ----------------------------------
 
