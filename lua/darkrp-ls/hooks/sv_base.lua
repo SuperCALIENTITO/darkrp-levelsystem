@@ -90,13 +90,15 @@ end)
 ----------------------------------
 ----------- Toolgun -----------
 ----------------------------------
-hook.Add("CanTool", "DarkRPLS_Toolgun", function(ply)
-    local xp = DLS.XPValues("toolgun")
-    DLS.checkPlayerDatabase(ply)
-    DLS.addXPToPlayer(ply, xp)
-    DLS.updatePlayerName(ply)
+hook.Add("CanTool", "DarkRPLS_Toolgun", function(ply, _, _, _, button)
+    if button == 107 then
+        local xp = DLS.XPValues("toolgun")
+        DLS.checkPlayerDatabase(ply)
+        DLS.addXPToPlayer(ply, xp)
+        DLS.updatePlayerName(ply)
 
-    ply:SetNWInt("darkrp_ls_level", DLS.getPlayerLevel(ply))
-    ply:SetNWInt("darkrp_ls_xp", DLS.getPlayerXP(ply))
+        ply:SetNWInt("darkrp_ls_level", DLS.getPlayerLevel(ply))
+        ply:SetNWInt("darkrp_ls_xp", DLS.getPlayerXP(ply))
+    end
     return
 end)
