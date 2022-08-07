@@ -51,17 +51,9 @@ end
 function DLS.addXPToPlayer(ply, xp)
     local xp_plus = 0
 
-    if darkrp_ls.debug then
-        print("\n--------------")
-    end
-
     -- Global Bonus XP
     if darkrp_ls.global_xp and ( darkrp_ls.global_xp_percentage >= 1 ) then
         xp_plus = math.Round(xp * ( 1 + ( darkrp_ls.global_xp_percentage / 100 ) ))
-    end
-
-    if darkrp_ls.debug then
-        print("XP Global Bonus: " .. xp_plus)
     end
 
     -- VIPs get a bonus XP
@@ -69,22 +61,9 @@ function DLS.addXPToPlayer(ply, xp)
         xp_plus = math.Round(xp * darkrp_ls.vip_multiplier) + xp_plus
     end
 
-    if darkrp_ls.debug then
-        print("XP VIP Bonus   : " .. math.Round(xp * darkrp_ls.vip_multiplier))
-        print("XP Plus Total  : " .. xp_plus)
-        print("XP             : " .. xp)
-        print("XP Total       : " .. xp + xp_plus)
-        print("XP Level       : " .. DLS.getPlayerXP(ply))
-    end
-
     local level = DLS.getPlayerLevel(ply)
     local xp = DLS.getPlayerXP(ply) + xp + xp_plus
     local xp_total = DLS.getLevelXP(level)
-
-    if darkrp_ls.debug then
-        print("XP Total: " .. xp_total)
-        print("--------------")
-    end
 
     if xp > xp_total then
         DLS.setPlayerXP(ply, xp-xp_total)

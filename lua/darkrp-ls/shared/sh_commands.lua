@@ -1,4 +1,5 @@
 local function setPlayerLevel(ply, cmd, args)
+    if not ply:IsSuperAdmin() then return end
     local target = args[1]
 
     for _, v in pairs(player.GetAll()) do
