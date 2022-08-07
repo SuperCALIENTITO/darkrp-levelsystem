@@ -77,7 +77,7 @@ hook.Add("playerArrested", "DarkRPLS_PlayerArrested", function(criminal, _, poli
     DLS.addXPToPlayer(criminal, xp_criminal)
     DLS.updatePlayerName(criminal)
 
-    criminal:SetNWInt("darkrp_ls_xp", DLS.getPlayerXP(ply))
+    criminal:SetNWInt("darkrp_ls_xp", DLS.getPlayerXP(criminal))
 
     if police:IsPlayer() and (criminal ~= police) then
         local xp_police = DLS.XPValues("player_arrest")
@@ -85,7 +85,7 @@ hook.Add("playerArrested", "DarkRPLS_PlayerArrested", function(criminal, _, poli
         DLS.addXPToPlayer(police, xp_police)
         DLS.updatePlayerName(police)
 
-        police:SetNWInt("darkrp_ls_xp", DLS.getPlayerXP(ply))
+        police:SetNWInt("darkrp_ls_xp", DLS.getPlayerXP(police))
     end
     return
 end)
