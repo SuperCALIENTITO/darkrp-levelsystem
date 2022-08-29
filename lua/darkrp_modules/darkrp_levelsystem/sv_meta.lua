@@ -34,7 +34,7 @@ function meta:GetPlayerXPToNextLevel()
 
     local level = self:GetPlayerLevel()
     local xp = self:GetPlayerXP()
-    local xp_total = DLS_getLevelXP(level)
+    local xp_total = DLS.getLevelXP(level)
 
     return xp_total - xp
 end
@@ -49,7 +49,7 @@ function meta:SetPlayerLevel(level)
     if ( not self:IsPlayer() ) then return end
     if ( not level and isnumber(level) == false) then return end
 
-    DLS_setPlayerLevel(self, level)
+    DLS.setPlayerLevel(self, level)
 end
 
 
@@ -122,7 +122,7 @@ end
 function meta:AddXP(xp)
     if ( not self:IsPlayer() ) then return false end
 
-    DLS_addXPToPlayer(self, xp)
+    DLS.addXPToPlayer(self, xp)
 end
 
 
@@ -138,6 +138,6 @@ function meta:AddPercentageXP(xp)
         xp = xp/100
     end
 
-    local xp_total = math.Round(DLS_getLevelXP(self:GetPlayerLevel()) * xp)
-    DLS_addXPToPlayer(self, xp_total)
+    local xp_total = math.Round(DLS.getLevelXP(self:GetPlayerLevel()) * xp)
+    DLS.addXPToPlayer(self, xp_total)
 end

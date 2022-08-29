@@ -7,7 +7,7 @@ local lang_table = {
     ["es"] = "spanish"
 }
 
-function DLS_GetLanguage(phrase)
+function DLS.GetLanguage(phrase)
     local language = lang_table[lang:GetString()] or "english"
     return darkrp_ls.language[language][phrase] or phrase
 end

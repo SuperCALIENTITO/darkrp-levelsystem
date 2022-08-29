@@ -21,11 +21,11 @@ darkrp_ls.debug = false
 darkrp_ls.prefix                = "[DarkRP-LS]"         -- The prefix on the chat.
 darkrp_ls.prefix_color          = Color(91, 123, 227)   -- The color of the prefix.
 darkrp_ls.level_name            = "Level"               -- The name of the level.
-darkrp_ls.command               = {"!level", "!nivel"}              -- The command to use. (can also be a table) { "!level", "!levels" }
+darkrp_ls.command               = "!level"              -- The command to use. (can also be a table) { "!level", "!levels" }
 darkrp_ls.db                    = "darkrp_levelsystem"  -- The database name.
 darkrp_ls.display_level         = true                  -- Display the level of the player in the chat?
-darkrp_ls.global_xp             = true                  -- Give global xp bonus?
-darkrp_ls.global_xp_percentage  = 200                   -- The percentage of the xp bonus.
+darkrp_ls.global_xp             = false                 -- Give global xp bonus?
+darkrp_ls.global_xp_percentage  = 100                   -- The percentage of the xp bonus.
 
 
 ----------------------------------
@@ -53,11 +53,11 @@ darkrp_ls.vip_multiplier = 2 -- The multiplier for VIPs.
 
 -- Generic Config
 darkrp_ls.xp["connection"] = 15
-darkrp_ls.xp["kill"] = 20
+darkrp_ls.xp["kill"] = 15
 darkrp_ls.xp["death"] = 3
-darkrp_ls.xp["chat"] = 3
+darkrp_ls.xp["chat"] = 1
 darkrp_ls.xp["physgun"] = 2
-darkrp_ls.xp["npc_killed"] = 15
+darkrp_ls.xp["npc_killed"] = 5
 darkrp_ls.xp["toolgun"] = 1
 
 -- DarkRP Config
@@ -68,8 +68,8 @@ darkrp_ls.xp["buy_weapon"] = 5
 darkrp_ls.xp["buy_door"] = 2
 darkrp_ls.xp["player_arrested"] = 2
 darkrp_ls.xp["player_arrest"] = 10
-darkrp_ls.xp["player_salary"] = 20 -- <-- this option is like a giver of experience every X amount of seconds.
-darkrp_ls.xp["player_lockpick"] = 4
+darkrp_ls.xp["player_salary"] = 1 -- <-- this option is like a giver of experience every X amount of seconds.
+darkrp_ls.xp["player_lockpick"] = 10
 darkrp_ls.xp["player_hit_success"] = 40
 darkrp_ls.xp["player_hit_fail"] = 8
 darkrp_ls.xp["player_license"] = 10
@@ -95,11 +95,3 @@ darkrp_ls.xp["zpiz_pizzasold"] = 10
 darkrp_ls.prestige_enabled = false -- Enable the prestige system?
 darkrp_ls.prestige_levelup = 100 -- How many levels do you need to prestige?
 darkrp_ls.prestige_prestiges = 10 -- Max amount of prestiges.
-
-
-----------------------------------
--------- Allowed Entities --------
-----------------------------------
-darkrp_ls.entityWhitelist = {
-    "prop_physics",
-}

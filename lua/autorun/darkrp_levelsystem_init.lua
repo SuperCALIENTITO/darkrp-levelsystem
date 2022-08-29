@@ -51,11 +51,3 @@ local function AddDir(dir)
     for _, v in ipairs(directories) do AddDir(dir .. v) end
 end
 AddDir("darkrp-ls")
-
-if CLIENT then
-    concommand.Add("entity_class", function(p)
-        local e = p:GetEyeTrace().Entity
-        if not IsValid(e) then return end
-        print(e:GetClass())
-    end)
-end
