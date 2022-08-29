@@ -1,9 +1,9 @@
-net.Receive("darkrp_levelsystem_net", function()
+net.Receive("darkrp_levelsystem_menu", function()
     local data = net.ReadTable()
 
     local level = data.level
     local xp = data.xp
-    local xp_total = DLS_getLevelExp(tonumber(level))
+    local xp_total = DLS_getLevelXP(tonumber(level))
 
     ----------------------------------
     ------------- Windows ------------
@@ -25,7 +25,7 @@ net.Receive("darkrp_levelsystem_net", function()
     local s1Icon = vgui.Create("DImage", sFrame)
     s1Icon:SetPos(5, 30)
     s1Icon:SetSize(16, 16)
-    s1Icon:SetImage("sbox_levelsystem/level_add.png")
+    s1Icon:SetImage("darkrp_ls/level_add.png")
 
     local s2Label = vgui.Create("DLabel", sFrame)
     s2Label:SetPos(24, 50)
@@ -35,7 +35,7 @@ net.Receive("darkrp_levelsystem_net", function()
     local s2Icon = vgui.Create("DImage", sFrame)
     s2Icon:SetPos(5, 50)
     s2Icon:SetSize(16, 16)
-    s2Icon:SetImage("sbox_levelsystem/xp_add.png")
+    s2Icon:SetImage("darkrp_ls/xp_add.png")
 
     local s3Label = vgui.Create("DLabel", sFrame)
     s3Label:SetPos(24, 70)
@@ -45,7 +45,7 @@ net.Receive("darkrp_levelsystem_net", function()
     local s3Icon = vgui.Create("DImage", sFrame)
     s3Icon:SetPos(5, 70)
     s3Icon:SetSize(16, 16)
-    s3Icon:SetImage("sbox_levelsystem/xp.png")
+    s3Icon:SetImage("darkrp_ls/xp.png")
 
     local s4Label = vgui.Create("DLabel", sFrame)
     s4Label:SetPos(24, 90)
@@ -55,7 +55,7 @@ net.Receive("darkrp_levelsystem_net", function()
     local s4Icon = vgui.Create("DImage", sFrame)
     s4Icon:SetPos(5, 90)
     s4Icon:SetSize(16, 16)
-    s4Icon:SetImage("sbox_levelsystem/level.png")
+    s4Icon:SetImage("darkrp_ls/level.png")
 
     local s1Progress = vgui.Create("DProgress", sFrame)
     s1Progress:SetPos(5, 178)

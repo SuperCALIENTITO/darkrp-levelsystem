@@ -14,7 +14,8 @@ end
 
 function ENT:Use(ply, caller)
     if ply:IsPlayer() then
-        ply:AddPercentageXP(75)
+        local xp = math.Round(darkrp_ls["levels"][ply:GetPlayerLevel()]*0.75)
+        ply:AddXP(xp)
         self:Remove()
         
         print("[DARKRP-LS] Added 75% XP to " .. ply:Nick())

@@ -1,0 +1,2 @@
+DarkRP.registerDarkRPVar("level", function(val) net.WriteUInt(val, 16) end, function() return net.ReadUInt(16) end)
+DarkRP.registerDarkRPVar(   "xp", function(val) net.WriteUInt(val, 16) end, function() return net.ReadUInt(16) end)

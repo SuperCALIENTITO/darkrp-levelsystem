@@ -14,9 +14,10 @@ end
 
 function ENT:Use(ply, caller)
     if ply:IsPlayer() then
-        ply:AddPercentageXP(1)
+        DLS_setPlayerLevel(ply, tonumber(ply:GetPlayerLevel()) + 1)
         self:Remove()
         
+        hook.Call("onPlayerLevelUp", nil, ply, DLS_getPlayerLevel(ply))
         print("[DARKRP-LS] Level UP to " .. ply:Nick())
     end
 end
