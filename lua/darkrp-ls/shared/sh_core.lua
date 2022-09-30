@@ -151,6 +151,7 @@ function DLS.updatePlayerName(ply)
 end
 
 function DLS.checkPlayerDatabase(ply)
+    if not ply:IsPlayer() then return end
     local data = sql.Query("SELECT * FROM " .. darkrp_ls.db .. " WHERE player = " .. ply:SteamID64() .. ";")
     if not data then
         sql.Query("INSERT INTO " .. darkrp_ls.db .. " (player, plyname) VALUES (" .. ply:SteamID64() .. ", " .. sql.SQLStr(ply:Name()) .. ");")
