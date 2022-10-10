@@ -172,7 +172,7 @@ end)
 ------------- License ------------
 ----------------------------------
 hook.Add("playerGotLicense", "DarkRPLS_PlayerBoughtLicense", function(ply)
-    local xp = DLS_XPValues("buy_license")
+    local xp = DLS_XPValues("player_license")
     DLS_checkPlayerDatabase(ply)
     DLS_addXPToPlayer(ply, xp)
     DLS_updatePlayerName(ply)
