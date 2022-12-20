@@ -68,7 +68,7 @@ function DLS.addXPToPlayer(ply, xp)
         xp_plus = math.random( xp_plus, round(xp_plus/2) )
     end
 
-    hook.Run("onPlayerGetXP", ply, xp + xp_plus)
+    hook.Run("onPlayerGetXP", ply, xp, xp_plus)
 
     local level = DLS.getPlayerLevel(ply)
     local xp = DLS.getPlayerXP(ply) + xp + xp_plus
