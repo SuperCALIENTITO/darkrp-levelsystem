@@ -35,12 +35,12 @@ darkrp_ls.global_xp_percentage  = 100                   -- The percentage of the
 
 darkrp_ls.vip_enabled = false
 darkrp_ls.vip_group = {
-    "vip",
-    "donator",
-    "supporter",
-    "moderator",
-    "admin",
-    "superadmin",
+    ["vip"]         = true,
+    ["donator"]     = true,
+    ["supporter"]   = true,
+    ["moderator"]   = true,
+    ["admin"]       = true,
+    ["superadmin"]  = true,
 }
 darkrp_ls.vip_multiplier = 2 -- The multiplier for VIPs.
 

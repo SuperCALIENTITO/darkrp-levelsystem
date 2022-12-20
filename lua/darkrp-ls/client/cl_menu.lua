@@ -1,9 +1,7 @@
-net.Receive("darkrp_levelsystem_menu", function()
-    local data = net.ReadTable()
-
-    local level = data.level
-    local xp = data.xp
-    local xp_total = DLS.getLevelXP(tonumber(level))
+local function displayLevel()
+    local level = LocalPlayer():GetNWInt("darkrp_ls_level")
+    local xp = LocalPlayer():GetNWInt("darkrp_ls_xp")
+    local xp_total = DLS.getLevelXP(level)
 
     ----------------------------------
     ------------- Windows ------------
@@ -66,4 +64,25 @@ net.Receive("darkrp_levelsystem_menu", function()
     s5Label:SetPos(118, 160)
     s5Label:SetSize(285, 16)
     s5Label:SetText(DLS.GetLanguage("progress") .. ": " .. math.Round(xp / xp_total * 100) .. "%")
+end
+
+hook.Add("OnPlayerChat", "DarkRPLS_commands", function(ply, text)
+    if not LocalPlayer() == ply then return end
+
+    text = string.lower(text)
+
+    if istable(darkrp_ls.command) then
+        for _, str in pairs(darkrp_ls.command) do
+            str = string.lower(str)
+
+            if text == str then
+                displayLevel()
+            end
+
+        end
+    else
+        if text == string.lower(darkrp_ls.command) then
+            displayLevel()
+        end
+    end
 end)

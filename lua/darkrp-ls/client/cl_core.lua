@@ -1,5 +1,6 @@
 net.Receive("darkrp_levelsystem_levelup", function()
-    local data = net.ReadTable()
+    local name = net.ReadString()
+    local level = net.ReadInt()
 
     local name = data.name
     local level = data.lvl
