@@ -25,8 +25,8 @@ darkrp_ls.command               = "!level"              -- The command to use. (
 darkrp_ls.db                    = "darkrp_levelsystem"  -- The database name.
 darkrp_ls.display_level         = true                  -- Display the level of the player in the chat?
 darkrp_ls.global_xp             = false                 -- Give global xp bonus?
-darkrp_ls.global_xp_percentage  = 100                   -- The percentage of the xp bonus.
-
+darkrp_ls.global_xp_ratio       = 3                     -- The percentage of the xp bonus.
+darkrp_ls.xp_random             = true
 
 ----------------------------------
 --------- Donator Config ---------
@@ -42,7 +42,7 @@ darkrp_ls.vip_group = {
     ["admin"]       = true,
     ["superadmin"]  = true,
 }
-darkrp_ls.vip_multiplier = 2 -- The multiplier for VIPs.
+darkrp_ls.vip_ratio = 2 -- The multiplier for VIPs.
 
 
 
@@ -87,6 +87,9 @@ darkrp_ls.xp["methlab_payout"] = 3
 
 -- Zero's Pizza
 darkrp_ls.xp["zpiz_pizzasold"] = 10
+
+-- Better Banking
+darkrp_ls.xp["betterbanking_successfulhack"] = 10
 
 ----------------------------------
 ------------ Prestige ------------

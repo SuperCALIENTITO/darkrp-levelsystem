@@ -48,17 +48,27 @@ function DLS.setData(ply, datatype, value)
 end
 
 function DLS.addXPToPlayer(ply, xp)
+    if xp == 0 then return end
+
     local xp_plus = 0
 
     -- Global Bonus XP
     if darkrp_ls.global_xp then
-        xp_plus = round(xp * ( 1 + ( darkrp_ls.global_xp_percentage / 100 ) ))
+        xp_plus = round( xp * darkrp_ls.global_xp_ratio )
     end
 
     -- VIPs get a bonus XP
-    if darkrp_ls.vip_group[ply:GetUserGroup()] and ( darkrp_ls.vip_enabled ) then
-        xp_plus = round(xp * darkrp_ls.vip_multiplier) + xp_plus
+    if darkrp_ls.vip_group[ply:GetUserGroup()] and darkrp_ls.vip_enabled then
+        xp_plus = round( xp * darkrp_ls.vip_ratio ) + xp_plus
     end
+
+    -- Random XP
+    if darkrp_ls.xp_random then
+        xp = math.random( xp, round(xp/2) )
+        xp_plus = math.random( xp_plus, round(xp_plus/2) )
+    end
+
+    hook.Run("onPlayerGetXP", ply, xp + xp_plus)
 
     local level = DLS.getPlayerLevel(ply)
     local xp = DLS.getPlayerXP(ply) + xp + xp_plus
@@ -66,7 +76,6 @@ function DLS.addXPToPlayer(ply, xp)
 
     if xp > xp_total then
         DLS.setPlayerXP(ply, xp-xp_total)
-        hook.Run("onPlayerGetXP", ply, xp)
 
         if #darkrp_ls["levels"] > level then
             DLS.setPlayerLevel(ply, level+1)
@@ -114,7 +123,7 @@ function DLS.levelExists(level)
     if not level then return false end
     if not isnumber(level) then return false end
 
-    return #darkrp_ls["levels"] > level and level >= 1 and true or false
+    return #darkrp_ls["levels"] > level and level >= 1
 end
 
 function DLS.XPValues(xp_type)
@@ -122,7 +131,7 @@ function DLS.XPValues(xp_type)
 end
 
 function DLS.simpleAddXP(ply, Type)
-    local xp = DLS.XPValues(type)
+    local xp = DLS.XPValues(Type)
     DLS.addXPToPlayer(ply, xp)
     DLS.updatePlayerName(ply)
 
