@@ -12,11 +12,11 @@ local round = math.Round
 ----------------------------------
 
 function DLS.getPlayerLevel(ply)
-    return toN(qValue("SELECT level FROM " .. darkrp_ls.db .. " WHERE player = " .. ply:SteamID() .. ";"))
+    return toN(qValue("SELECT level FROM " .. darkrp_ls.db .. " WHERE player = \"" .. ply:SteamID() .. "\""))
 end
 
 function DLS.getPlayerXP(ply)
-    local xp = toN(qValue("SELECT xp FROM " .. darkrp_ls.db .. " WHERE player = " .. ply:SteamID() .. ";"))
+    local xp = toN(qValue("SELECT xp FROM " .. darkrp_ls.db .. " WHERE player = \"" .. ply:SteamID() .. "\""))
     local levels = darkrp_ls["levels"][DLS.getPlayerLevel(ply)]
 
     if levels == nil then
@@ -40,11 +40,11 @@ function DLS.getLevelXP(level)
 end
 
 function DLS.getData(ply, datatype)
-    return toN( qValue("SELECT " .. datatype .. " FROM " .. darkrp_ls.db .. " WHERE player = " .. ply:SteamID()) )
+    return toN( qValue("SELECT " .. datatype .. " FROM " .. darkrp_ls.db .. " WHERE player = \"" .. ply:SteamID() .. "\"") )
 end
 
 function DLS.setData(ply, datatype, value)
-    query("UPDATE " .. darkrp_ls.db .. " SET " .. datatype .. " = " .. value .. " WHERE player = " .. ply:SteamID())
+    query("UPDATE " .. darkrp_ls.db .. " SET " .. datatype .. " = " .. value .. " WHERE player = \"" .. ply:SteamID() .. "\"")
 end
 
 function DLS.addXPToPlayer(ply, xp)
@@ -95,7 +95,7 @@ end
 ----------- Validators -----------
 ----------------------------------
 function DLS.updatePlayerName(ply)
-    query("UPDATE " .. darkrp_ls.db .. " SET plyname  = " .. sql.SQLStr(ply:Nick()) .. " WHERE player = " .. ply:SteamID())
+    query("UPDATE " .. darkrp_ls.db .. " SET plyname  = " .. sql.SQLStr(ply:Nick()) .. " WHERE player = \"" .. ply:SteamID() .. "\"")
 end
 
 function DLS.getLevelXP(level)
@@ -103,19 +103,19 @@ function DLS.getLevelXP(level)
 end
 
 function DLS.getData(ply, datatype)
-    return tonumber(qValue("SELECT " .. datatype .. " FROM " .. darkrp_ls.db .. " WHERE player = " .. ply:SteamID()))
+    return tonumber(qValue("SELECT " .. datatype .. " FROM " .. darkrp_ls.db .. " WHERE player = \"" .. ply:SteamID() .. "\""))
 end
 
 function DLS.setData(ply, datatype, value)
-    query("UPDATE " .. darkrp_ls.db .. " SET " .. datatype .. " = " .. value .. " WHERE player = " .. ply:SteamID())
+    query("UPDATE " .. darkrp_ls.db .. " SET " .. datatype .. " = " .. value .. " WHERE player = \"" .. ply:SteamID() .. "\"")
 end
 
 function DLS.checkPlayerDatabase(ply)
     if not ply:IsPlayer() then return end
 
-    local data = query("SELECT * FROM " .. darkrp_ls.db .. " WHERE player = " .. ply:SteamID())
+    local data = query("SELECT * FROM " .. darkrp_ls.db .. " WHERE player = \"" .. ply:SteamID() .. "\"")
     if not data then
-        query("INSERT INTO " .. darkrp_ls.db .. " (player, plyname) VALUES (" .. ply:SteamID() .. ", " .. sql.SQLStr(ply:Name()) .. ")")
+        query("INSERT INTO " .. darkrp_ls.db .. " (player, plyname) VALUES (\"" .. ply:SteamID() .. "\", " .. sql.SQLStr(ply:Name()) .. ")")
     end
 end
 
